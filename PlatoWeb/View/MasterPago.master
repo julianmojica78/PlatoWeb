@@ -1,0 +1,115 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/MasterPago.master.cs" Inherits="View_MasterPago" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Plato Web</title>
+    <link href="../Styles/css/Main.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+    
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"/>
+	
+
+	<link rel="stylesheet" href="../Styles/css/animate.css"/>
+	<link rel="stylesheet" href="../Styles/css/icomoon.css"/>
+	<link rel="stylesheet" href="../Styles/css/themify-icons.css"/>
+	<link rel="stylesheet" href="../Styles/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../Styles/css/magnific-popup.css"/>
+	<link rel="stylesheet" href="../Styles/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="../Styles/css/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="../Styles/css/owl.theme.default.min.css"/>
+	<link rel="stylesheet" href="../Styles/css/style.css"/>
+	<script src="../Styles/js/modernizr-2.6.2.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+     <div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1><a href="#">Plato Web</a></h1>
+			</div>
+<%--			<div id="menu">
+				<ul>
+			            <li><a href="Inicio.aspx">Inicio</a></li>
+                        <li><a href="Despachos.aspx">Pedidos</a></li>
+                        <li><a href="Cerrar.aspx">Cerrar Sesion</a></li>
+
+				</ul>
+			</div>--%>
+		</div>
+	</div>
+	<div id="banner"></div>
+	<div id="page-wrapper">
+		<div id="page">
+			<div id="wide-content">
+				        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+			</div>
+		</div>
+	</div>
+	<div id="footer-wrapper">
+	</div>
+</div>
+	<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row row-pb-md">
+
+				
+
+				
+<%--				<div class="col-md-12 text-center">
+					<div class="gtco-widget">
+						<h3>Get In Touch</h3>
+						<ul class="gtco-quick-contact">
+							<li><a href="#"><i class="icon-phone"></i> 1 234 567 890</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> info@GetTemplates.co</a></li>
+						</ul>
+					</div>
+				</div>--%>
+
+				<div class="col-md-12 text-center copyright">
+					<p><small class="block">&copy; Proyecto de Duvan Casas - Julian Bustos</small></p>
+				</div>
+
+			</div>
+
+			
+
+		</div>
+	</footer>
+		<div id="footer-content">
+            <div id="footer">
+					<p><small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
+						<small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+
+</div>
+			
+		</div>
+
+
+    </form>
+	<script src="../Styles/js/jquery.min.js"></script>
+	<script src="../Styles/js/jquery.easing.1.3.js"></script>
+	<script src="../Styles/js/bootstrap.min.js"></script>
+	<script src="../Styles/js/jquery.waypoints.min.js"></script>
+	<script src="../Styles/js/owl.carousel.min.js"></script>
+	<script src="../Styles/js/jquery.countTo.js"></script>
+	<script src="../Styles/js/jquery.stellar.min.js"></script>
+	<script src="../Styles/js/jquery.magnific-popup.min.js"></script>
+	<script src="../Styles/js/magnific-popup-options.js"></script>
+	
+	<script src="../Styles/js/moment.min.js"></script>
+	<script src="../Styles/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../Styles/js/main.js"></script>
+
+</body>
+</html>
