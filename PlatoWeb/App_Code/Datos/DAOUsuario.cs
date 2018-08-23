@@ -279,6 +279,33 @@ public class DAOUsuario
         }
         return Usuario;
     }
+    public DataTable obtenerReserva(Int32 user_id)
+    {
+        DataTable Usuario = new DataTable();
+        NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_reserva", conection);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_user_id", NpgsqlDbType.Integer).Value = user_id;
+
+            conection.Open();
+            dataAdapter.Fill(Usuario);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conection != null)
+            {
+                conection.Close();
+            }
+        }
+        return Usuario;
+    }
     public DataTable obtenerRe()
     {
         DataTable Usuario = new DataTable();
