@@ -1,0 +1,8 @@
+D:\julian\Ing. Sistemas\Utilitarios\bin\Debug\Utilitarios.dll
+D:\julian\Ing. Sistemas\Utilitarios\bin\Debug\Utilitarios.pdb
+D:\julian\Ing. Sistemas\Utilitarios\obj\Debug\Utilitarios.dll
+D:\julian\Ing. Sistemas\Utilitarios\obj\Debug\Utilitarios.pdb
+D:\julian\Ing. Sistemas\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+D:\julian\Ing. Sistemas\Utilitarios\bin\Debug\Newtonsoft.Json.dll
+D:\julian\Ing. Sistemas\Utilitarios\bin\Debug\Newtonsoft.Json.xml
+D:\julian\Ing. Sistemas\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete

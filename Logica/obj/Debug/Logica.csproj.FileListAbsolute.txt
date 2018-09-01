@@ -1,0 +1,17 @@
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Logica.dll
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Logica.pdb
+D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.dll
+D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.pdb
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Datos.dll
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Utilitarios.dll
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Npgsql.dll
+D:\julian\Ing. Sistemas\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Datos.pdb
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Utilitarios.pdb
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Npgsql.pdb
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Npgsql.xml
+D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.csproj.CopyComplete
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Newtonsoft.Json.dll
+D:\julian\Ing. Sistemas\Logica\bin\Debug\Newtonsoft.Json.xml

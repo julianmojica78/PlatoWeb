@@ -1,0 +1,13 @@
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Datos.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Datos.pdb
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.dll
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.pdb
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Npgsql.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Npgsql.pdb
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Npgsql.xml
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Utilitarios.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Utilitarios.pdb
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.csproj.CopyComplete

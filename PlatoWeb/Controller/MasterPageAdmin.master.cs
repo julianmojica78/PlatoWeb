@@ -9,9 +9,9 @@ public partial class View_MasterPageAdmin : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user_id"] == null)
-        {
-            Response.Redirect("Loggin.aspx");
-        }
+        //if (Session["user_id"] == null)
+        //{
+        //    Response.Redirect("Loggin.aspx");
+        //}
     }
 }

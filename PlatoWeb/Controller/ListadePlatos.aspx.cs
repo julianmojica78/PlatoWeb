@@ -9,10 +9,10 @@ public partial class View_ListadePlatos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user_id"] == null)
-        {
-            Response.Redirect("Loggin.aspx");
-        }
+        //if (Session["user_id"] == null)
+        //{
+        //    Response.Redirect("Loggin.aspx");
+        //}
 
         DAOUsuario dato = new DAOUsuario();
         EUser datos = new EUser();

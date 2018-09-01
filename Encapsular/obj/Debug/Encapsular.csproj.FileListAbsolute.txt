@@ -1,0 +1,5 @@
+D:\julian\Ing. Sistemas\Encapsular\bin\Debug\Encapsular.dll
+D:\julian\Ing. Sistemas\Encapsular\bin\Debug\Encapsular.pdb
+D:\julian\Ing. Sistemas\Encapsular\obj\Debug\Encapsular.dll
+D:\julian\Ing. Sistemas\Encapsular\obj\Debug\Encapsular.pdb
+D:\julian\Ing. Sistemas\Encapsular\obj\Debug\Encapsular.csprojResolveAssemblyReference.cache
