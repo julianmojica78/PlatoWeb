@@ -1,149 +1,69 @@
-﻿using System.Text;
-using Datos;
-using Utilitarios;
+﻿using System;
 using System.Data;
-using System.Security.Cryptography;
+using Data;
+using Utilitarios;
 using Newtonsoft.Json;
-using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Logica
 {
-    public class LUser
+    public class Luser
     {
-        public UUser logear(UUser datos)
+        public Uuser contactenos(String nombre, String telefono, String email, String detalle)
         {
-            DUser data = new DUser();
-            DataTable registros = data.loggin(datos);
-            UUser user = new UUser();
+            Duser data = new Duser();
+            DataTable datos = data.insertarContacto(nombre, telefono, email, detalle);
+            Uuser user = new Uuser();
 
-
-            if (registros.Rows.Count > 0)
-            {
-                user.RolId = int.Parse(registros.Rows[0]["user_rol"].ToString());
-                switch (int.Parse(registros.Rows[0]["user_rol"].ToString()))
-                {
-                    case 1:
-
-                       
-                        user.User_name = registros.Rows[0]["nombre"].ToString();
-                        user.UserId = int.Parse(registros.Rows[0]["user_id"].ToString());
-
-
-
-                        UUser datosUsuario = new UUser();
-                        Mac datosConexion = new Mac();
-
-                        /* ipAddress = HttpContext.Current.Request.UserHostAddress;
-                         mac = Utilidades.Mac.GetMAC(ref ipAddress);*/
-
-                        datosUsuario.UserId = user.UserId;
-                        datosUsuario.Ip = datosConexion.ip();
-                        datosUsuario.Mac = datosConexion.mac();
-                        datosUsuario.Session = datos.Session;
-
-                        data.guardadoSession(datosUsuario);
-                        user.Url = "ListadePlatos.aspx";
-                        break;
-
-                    case 2:
-
-                        user.User_name = registros.Rows[0]["nombre"].ToString();
-                        user.UserId = int.Parse(registros.Rows[0]["user_id"].ToString());
-
-                        UUser datosUsuario1 = new UUser();
-                        Mac datosConexion1 = new Mac();
-
-                        /* ipAddress = HttpContext.Current.Request.UserHostAddress;
-                         mac = Utilidades.Mac.GetMAC(ref ipAddress);*/
-
-                        datosUsuario1.UserId = user.UserId;
-                        datosUsuario1.Ip = datosConexion1.ip();
-                        datosUsuario1.Mac = datosConexion1.mac();
-                        datosUsuario1.Session = datos.Session;
-
-                        data.guardadoSession(datosUsuario1);
-
-                        user.Url = "Despachos.aspx";
-                        break;
-
-                    case 3:
-
-                        user.User_name = registros.Rows[0]["nombre"].ToString();
-                        user.UserId = int.Parse(registros.Rows[0]["user_id"].ToString());
-
-                        UUser datosUsuario2 = new UUser();
-                        Mac datosConexion2 = new Mac();
-
-                        /* ipAddress = HttpContext.Current.Request.UserHostAddress;
-                         mac = Utilidades.Mac.GetMAC(ref ipAddress);*/
-
-                        datosUsuario2.UserId = user.UserId;
-                        datosUsuario2.Ip = datosConexion2.ip();
-                        datosUsuario2.Mac = datosConexion2.mac();
-                        datosUsuario2.Session = datos.Session;
-
-                        data.guardadoSession(datosUsuario2);
-
-                        user.Url = "Pedido.aspx";
-                        break;
-
-
-                    case 4:
-
-                        user.User_name= registros.Rows[0]["nombre"].ToString();
-                        user.UserId = int.Parse(registros.Rows[0]["user_id"].ToString());
-
-
-                        UUser datosUsuario3 = new UUser();
-                        Mac datosConexion3 = new Mac();
-
-
-                        /* ipAddress = HttpContext.Current.Request.UserHostAddress;
-                         mac = Utilidades.Mac.GetMAC(ref ipAddress);*/
-
-                        datosUsuario3.UserId = user.UserId;
-                        datosUsuario3.Ip = datosConexion3.ip();
-                        datosUsuario3.Mac = datosConexion3.mac();
-                        datosUsuario3.Session = datos.Session;
-
-                        data.guardadoSession(datosUsuario3);
-
-                        user.Url = "inicio.aspx";
-                        break;
-
-                }
-            }
-            else
-            {
-                //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Usuario o Contraseña Incorrectos');window.location=\"Loggin.aspx\"</script>");
-                user.Url = "Loggin.aspx";
-            }
             return user;
         }
-
-        public UUsuario Registro (UUsuario datos)
+        public UuserToken GenerarToken(String user_name)
         {
-            DUser data = new DUser();
-            UUsuario user = new UUsuario();
-
-
-            System.Data.DataTable validez = data.validarRegistro(datos.User_Name1, datos.Email);
+            Duser data = new Duser();
+            DataTable validez = data.generarToken(user_name);
+            UuserToken token = new UuserToken();
+            
             if (int.Parse(validez.Rows[0]["id_usuario"].ToString()) > 0)
             {
-                data.InsertarUsuario(datos);
-                user.Mensaje ="<script type='text/javascript'>alert('Usuario Creado Correctamente');window.location=\"Loggin.aspx\"</script>";
-                ////cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Creado Correctamente');</script>");
-                //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Usuario Creado Correctamente');window.location=\"Loggin.aspx\"</script>");
+                
+                token.Id = int.Parse(validez.Rows[0]["id_usuario"].ToString());
+                token.Nombre = validez.Rows[0]["nombre"].ToString();
+                token.Apellido = validez.Rows[0]["apellido"].ToString();
+                token.Correo = validez.Rows[0]["email"].ToString();
+                token.Telefono = validez.Rows[0]["telefono"].ToString();
+                token.Cedula = validez.Rows[0]["cedula"].ToString();
+                token.Puntos = validez.Rows[0]["puntos"].ToString();
+                token.Id_rol = validez.Rows[0]["id_rol"].ToString();
+                token.User_name = validez.Rows[0]["user_name"].ToString();
+                token.Clave = validez.Rows[0]["clave"].ToString();
+                token.Session = validez.Rows[0]["session"].ToString();
+                token.Estado = int.Parse(validez.Rows[0]["estado"].ToString());
 
+                token.Fecha = DateTime.Now.ToFileTimeUtc();
+
+                String userToken = encriptar(JsonConvert.SerializeObject(token));
+                data.almacenarToken(userToken, token.Id);
+
+                Correo correo = new Correo();
+                
+
+                String mensaje = "su link de acceso es: " + "http://localhost:54080/View/Recuperar_Contraseña.aspx?" + userToken;
+                correo.enviarCorreo(token.Correo, userToken, mensaje);
+               
+                token.Url="<script type='text/javascript'>alert('Su nueva contraseña ha sido enviada exitosamente a su correo');window.location=\"Loggin.aspx\"</script>";
+           
+            }
+            else if (int.Parse(validez.Rows[0]["id_usuario"].ToString()) == -2)
+            {
+                token.Mensaje = "Ya existe un token, por favor verifique su correo.";
             }
             else
             {
-                user.Mensaje = "<script type='text/javascript'>alert('Usuario o Correo Ya Esta Registrado');window.location=\"Registro.aspx\"</script>";
+                token.Mensaje = "El usurio digitado no existe";
             }
-            
-            return user;
+         return token;
         }
-
         private string encriptar(string input)
         {
             SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
@@ -158,146 +78,155 @@ namespace Logica
 
             return output.ToString();
         }
-
-        public UReserva Reserva(UReserva datos)
+        public int Recuperar(int x, string y)
         {
-            DUser data = new DUser();
-            UReserva user = new UReserva();
-
-            if (datos.Nombre != null)
+            Duser user = new Duser();
+            UuserToken token = new UuserToken();
+            int sesion=0;
+            if (x > 0)
             {
-                data.InsertReserva(datos);
-                System.Data.DataTable validez1 = data.obtenerReserva(datos.Id_usuario);
-                user.Id_reserva = int.Parse(validez1.Rows[0]["id_reserva"].ToString());
+                            
+                DataTable info = user.obtenerUsusarioToken(y);
 
-                System.Data.DataTable validez = data.generarTokenReserva(user.Id_reserva);
-                if (int.Parse(validez.Rows[0]["id_usuario"].ToString()) > 0)
-                {
-                    UUserToken token = new UUserToken();
-                    token.Id = int.Parse(validez.Rows[0]["id_reserva"].ToString());
-                    token.Id_usuario = int.Parse(validez.Rows[0]["id_usuario"].ToString());
-                    token.Id_Mesa = int.Parse(validez.Rows[0]["id_mesa"].ToString());
-                    token.Estado = int.Parse(validez.Rows[0]["estado"].ToString());
-                    token.Correo = validez.Rows[0]["email"].ToString();
-                    token.Fecha = DateTime.Now.ToFileTimeUtc();
-
-                    String userToken = encriptar(JsonConvert.SerializeObject(token));
-                    data.almacenarTokenReserva(userToken, token.Id);
-
-                    CorreoR correo = new CorreoR();
-
-                    String mensaje = "su link de acceso es: " + "http://localhost:4167/View/pago.aspx?" + userToken;
-                    correo.enviarCorreo(token.Correo, userToken, mensaje);
-
-                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Para Confirmar su reseva por favor pague el valor de la reserva');</script>");
-                    user.Mensaje = "<script type='text/javascript'>alert('Para Confirmar su reseva,por favor pague el valor de la reserva');window.location=\"Resrvas.aspx\"</script>";
-
-                }
-                else if (int.Parse(validez.Rows[0]["id_usuario"].ToString()) == -2)
-                {
-                    user.Mensaje = "<script type='text/javascript'>alert('Ya existe un token, por favor verifique su correo.');</script>";
-
-                }
+                if (int.Parse(info.Rows[0][0].ToString()) == -1)
+                    token.Url = "<script type='text/javascript'>alert('El Token es invalido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>";
+                else if (int.Parse(info.Rows[0][0].ToString()) == -1)
+                    token.Url = "<script type='text/javascript'>alert('El Token esta vencido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>";
                 else
-                {
-                    user.Mensaje = "<script type='text/javascript'>alert('La Reserva no existe');</script>";
+                     sesion = int.Parse(info.Rows[0][0].ToString());
+            }
+            else
+                token.Url ="Inicio.aspx";
 
-                }
+            return sesion;
+        }
+        public void guardarcontra(int x, string y)
+        {
+            UuserToken datos = new UuserToken();
+            Duser user = new Duser();
 
+            datos.User_id = x;
+            datos.Clave = y;
+            user.actualziarContrasena(datos);
+            datos.Url ="<script type='text/javascript'>alert('Su Contraseña ha sido actualizada.');window.location=\"Loggin.aspx\"</script>";
+
+        }
+
+        public DataTable listarmenu()
+        {
+            Duser data = new Duser();
+            DataTable datos = data.obtenerPlato();
+            
+         
+            return datos;
+        }
+        public UuserReservas canje(DataTable tabla)
+        {
+            Duser data = new Duser();
+            UuserReservas dato = new UuserReservas();
+
+            int sum = 0;
+            int p = 0;
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                string punto = tabla.Rows[0]["puntos"].ToString();
+                p = int.Parse(punto);
+                sum = p;
+            }
+            dato.Cant = sum;
+
+            if (sum < 100)
+            {
+                dato.Est1 = true;
+                dato.Est2 = false;
             }
             else
             {
-                user.Mensaje = "<script type='text/javascript'>alert('No puede reservas si no esta Logueado');window.location=\"Loggin.aspx\"</script>";
-
-                //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('No puede reservas si no esta Logueado');window.location=\"Loggin.aspx\"</script>");
-
-                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No puede reservas si no esta Logueado');</script>");
-                ////Response.Redirect("Loggin.aspx");
-
+                dato.Est1 = false;
+                dato.Est2 = true;
             }
-
-            return user;
-
+            return dato;
         }
-
-        public UReserva pago (UReserva datos)
+        public DataTable obtenerReservas(int id_usuario)
         {
-            DUser user = new DUser();
-            UReserva data = new UReserva();
-
-
-            System.Data.DataTable validez1 = user.obtenerReserva(datos.Id_usuario);
-            data.Id_reserva = int.Parse(validez1.Rows[0]["id_reserva"].ToString());
-            data.Id_usuario = int.Parse(validez1.Rows[0]["id_usuario"].ToString());
-            user.actualizarReserva(datos);
-
-            data.Mensaje = "<script type='text/javascript'>alert('Pago Realizado con Exito');window.location=\"Inicio.aspx\"</script>";
-
-            return data;
+            Duser dao = new Duser();
+            DataTable reser = dao.obtenerMisReservas(id_usuario);
+                return reser;
         }
-
-        public DataTable depacho ()
+        public DataTable obtenerPuntos(int id)
         {
-            DUser llamar = new DUser();
-
-            DataTable dat = llamar.obtenerdatos();
-
-            return dat;
+            Duser dao = new Duser();
+            DataTable reser = dao.obtenerPuntos(id);
+            return reser;
+        }
+        public DataTable redimir(int id)
+        {
+            Duser dato = new Duser();
+            DataTable redimi = dato.redimir(id);
+            return redimi;
+        }
+        public void cortesia(int id)
+        {
+            Duser dato = new Duser();
+            dato.Insertarcortesia(id);
             
         }
-        public DataTable depacho1()
+        public void obtenerPlato()
         {
-            DUser llamar = new DUser();
-
-            DataTable dat = llamar.obtenerdatos1();
-
-            return dat;
-
+            Duser dato = new Duser();
+            dato.obtenerPlato();
         }
-        public DataTable infoplato(Int32 id_pedido)
+        public DataTable guardarPedido(UuserPedido pedido)
         {
-            DUser llamar = new DUser();
-
-            DataTable dat = llamar.informacionPlato(id_pedido);
-
-            return dat;
-
+            Duser dato = new Duser();
+            DataTable data = dato.insertarPedido(pedido);
+            return data;
         }
-        public DataTable infoplato1(Int32 id_pedido)
+        public DataTable obtenerpe(int user_id)
         {
-            DUser llamar = new DUser();
-
-            DataTable dat = llamar.informacionPlato1(id_pedido);
-
-            return dat;
-
+            Duser dato = new Duser();
+            DataTable data = dato.obtenerPedido(user_id);
+            return data;
         }
-
-        public UDespachos despachos (Int32 id_pedido, DateTime fecha_despacho)
+        public DataTable guardarPedido1(UuserPedido pedido)
         {
-            DUser llamar = new DUser();
-            UDespachos desp = new UDespachos();
-
-            llamar.despacho(id_pedido,fecha_despacho);
-
-            desp.Url = "Despachos.aspx";
-
-            return desp;
-
+            Duser dato = new Duser();
+            DataTable data = dato.InsertPedido(pedido);
+            return data;
         }
-
-        public UDespachos despachos1(Int32 id_pedido, DateTime fecha_despacho)
+        public void listaplatos(bool x)
         {
-            DUser llamar = new DUser();
-            UDespachos desp = new UDespachos();
-
-            llamar.despacho1(id_pedido, fecha_despacho);
-
-            desp.Url = "Despachos.aspx";
-
-            return desp;
+            Duser dato = new Duser();
+            Uuser data = new Uuser();
+            if (x)
+            {
+                data.Url = "Loggin.aspx";
+            }
+            DataTable tabla = dato.obtenerPlato();
+        }
+        public DataTable obtenerMesa(string nombre)
+        {
+            Duser dato = new Duser();
+            DataTable data = dato.obtenerIdm(nombre);
+            return data;
+        }
+        public void eliminarPlato(UuserCrear datos)
+        {
+            Duser dato = new Duser();
+            DataTable data = dato.EliminarPlato(datos);
+        }
+        public DataTable validarbuscarM(string nombre)
+        {
+            Duser dato = new Duser();
+            DataTable data = dato.validarBuscarm(nombre);
+            Uuser datos = new Uuser();
+          
+            return data;
+        }
+        public void buscarPla()
+        {
 
         }
     }
-
 }

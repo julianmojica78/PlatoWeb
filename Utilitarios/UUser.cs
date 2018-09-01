@@ -6,111 +6,18 @@ using System.Threading.Tasks;
 
 namespace Utilitarios
 {
-    public class UUser
+    public class Uuser
     {
         private String url;
-        private Int32 userId;
-        private Int32 rolId;
-        private String mensaje;
-        private String session;
-        private String ip;
-        private String mac;
-        private String clave;
-        private String user_name;
+        private String nombre;
+        private String telefono;
+        private String email;
+        private String detalle;
 
-
-        public int UserId
-        {
-            get
-            {
-                return userId;
-            }
-
-            set
-            {
-                userId = value;
-            }
-        }
-
-        public int RolId
-        {
-            get
-            {
-                return rolId;
-            }
-
-            set
-            {
-                rolId = value;
-            }
-        }
-
-        public string Session
-        {
-            get
-            {
-                return session;
-            }
-
-            set
-            {
-                session = value;
-            }
-        }
-
-        public string Ip
-        {
-            get
-            {
-                return ip;
-            }
-
-            set
-            {
-                ip = value;
-            }
-        }
-
-        public string Mac
-        {
-            get
-            {
-                return mac;
-            }
-
-            set
-            {
-                mac = value;
-            }
-        }
-
-        public string Clave
-        {
-            get
-            {
-                return clave;
-            }
-
-            set
-            {
-                clave = value;
-            }
-        }
-
-        public string User_name
-        {
-            get
-            {
-                return user_name;
-            }
-
-            set
-            {
-                user_name = value;
-            }
-        }
-
-        public string Mensaje { get => mensaje; set => mensaje = value; }
         public string Url { get => url; set => url = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Telefono { get => telefono; set => telefono = value; }
+        public string Email { get => email; set => email = value; }
+        public string Detalle { get => detalle; set => detalle = value; }
     }
 }

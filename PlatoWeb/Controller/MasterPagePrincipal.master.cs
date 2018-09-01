@@ -4,28 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Utilitarios;
-using Logica;
 
 public partial class View_MasterPagePrincipal : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-
-        //Estado user = new Estado();
-        //LUser datos = new LUser();
-
-        ////Response.Redirect(datos.Url);
-
-        ////string usu = Session["nombre"].ToString();
-        ////Session["user_id"].ToString(); 
-        //datos.Estado();
-
-        //BT_Cerrar.Visible = (user.Esstado);
-        //L_Comentario.Visible = (user.Esstado);
-        //TB_Comentario.Visible = (user.Esstado);
-        //BT_Enviar.Visible = (user.Esstado);
 
         if (Session["nombre"] == null)
         {

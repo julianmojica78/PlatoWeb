@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_Contactenos : System.Web.UI.Page
 {
@@ -14,16 +12,12 @@ public partial class View_Contactenos : System.Web.UI.Page
 
     protected void BT_Enviar_Click1(object sender, EventArgs e)
     {
-        EContacto contacto = new EContacto();
-        DAOUsuario dato = new DAOUsuario();
+        Uuser dato = new Uuser();
+        Luser contacto = new Luser();
         ClientScriptManager cm = this.ClientScript;
-        contacto.Nombre = TB_Nombre.Text.ToString();
-        contacto.Email = TB_Email.Text.ToString();
-        contacto.Detalle = TB_Detalle.Text.ToString();
-        contacto.Telefono = TB_Telefono.Text.ToString();
-        dato.insertarContacto(contacto);
+        dato = contacto.contactenos(TB_Nombre.Text, TB_Telefono.Text, TB_Email.Text, TB_Detalle.Text);
 
-        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Mensaje Enviado Correctamente');window.location=\"Contactenos.aspx\"</script>");
+        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Mensaje Enviado Correctamente');window.location=\"Inicio.aspx\"</script>");
 
     }
 }
