@@ -29,3 +29,4 @@ namespace Utilitarios
         public bool Est2 { get => est2; set => est2 = value; }
     }
 }
+

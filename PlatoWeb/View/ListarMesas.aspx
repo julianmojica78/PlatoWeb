@@ -69,12 +69,12 @@
         <tr>
             <td style="width: 5%">&nbsp;</td>
             <td>
-                <asp:GridView ID="GV_Mesas" runat="server" Width="100%" AutoGenerateColumns="False" DataSourceID="ODS_Listar_Mesa" OnSelectedIndexChanged="GV_Empleados_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="GV_Mesas" runat="server" Width="100%" AutoGenerateColumns="False" DataSourceID="ODS_listarMesa" OnSelectedIndexChanged="GV_Empleados_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
-                        <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                        <asp:BoundField DataField="id_mesa" HeaderText="ID" />
-                        <asp:BoundField DataField="cantidad" HeaderText="Cantidad de Personas" />
+                        <asp:CommandField ShowSelectButton="True" ButtonType="Button" />
+                        <asp:BoundField DataField="id_mesa" HeaderText="Codigo mesa" />
+                        <asp:BoundField DataField="cantidad" HeaderText="Cantidad de personas" />
                         <asp:BoundField DataField="ubicacion" HeaderText="Ubicacion" />
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
@@ -88,7 +88,7 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_Listar_Mesa" runat="server" SelectMethod="obtenerMesas" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_listarMesa" runat="server" SelectMethod="Listadomesas" TypeName="Logica.Luser"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
         </tr>

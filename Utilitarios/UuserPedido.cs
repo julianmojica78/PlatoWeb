@@ -25,3 +25,4 @@ namespace Utilitarios
         public int Id_pedido1 { get => id_pedido1; set => id_pedido1 = value; }
     }
 }
+

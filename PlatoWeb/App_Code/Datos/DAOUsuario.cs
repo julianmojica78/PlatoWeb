@@ -34,7 +34,7 @@ public class DAOUsuario
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad.f_loggin", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_user_name", NpgsqlDbType.Varchar, 100).Value =datos.User_name;
+            dataAdapter.SelectCommand.Parameters.Add("_user_name", NpgsqlDbType.Varchar, 100).Value = datos.User_name;
             dataAdapter.SelectCommand.Parameters.Add("_clave", NpgsqlDbType.Varchar, 100).Value = datos.Clave;
             conection.Open();
             dataAdapter.Fill(Usuario);
@@ -459,14 +459,13 @@ public class DAOUsuario
             dataAdapter.SelectCommand.Parameters.Add("_clave", NpgsqlDbType.Text).Value = datos.Clave;
             dataAdapter.SelectCommand.Parameters.Add("_rclave", NpgsqlDbType.Text).Value = datos.Rclave;
             dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = datos.Session;
-            //dataAdapter.SelectCommand.Parameters.Add("_datos", NpgsqlDbType.Text).Value = json;
             conection.Open();
             dataAdapter.Fill(Registro);
 
 
         }
         catch (Exception Ex)
-        {   
+        {
             throw Ex;
         }
         finally
@@ -507,7 +506,7 @@ public class DAOUsuario
         }
     }
 
-public DataTable obtenerMesa()
+    public DataTable obtenerMesa()
     {
         DataTable Usuario = new DataTable();
         NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -637,7 +636,7 @@ public DataTable obtenerMesa()
         return Usuario;
     }
 
-        
+
     public DataTable obtenerPedido(Int32 user_id)
     {
         DataTable Usuario = new DataTable();
@@ -664,7 +663,7 @@ public DataTable obtenerMesa()
         }
         return Usuario;
     }
-    public DataTable verificarReserva(Int32 cant,String dia)
+    public DataTable verificarReserva(Int32 cant, String dia)
     {
         DataTable Usuario = new DataTable();
         NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -674,7 +673,7 @@ public DataTable obtenerMesa()
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_validar_reserva", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             dataAdapter.SelectCommand.Parameters.Add("_cant", NpgsqlDbType.Integer).Value = cant;
-            dataAdapter.SelectCommand.Parameters.Add("_dia", NpgsqlDbType.Timestamp).Value =dia ;
+            dataAdapter.SelectCommand.Parameters.Add("_dia", NpgsqlDbType.Timestamp).Value = dia;
 
             conection.Open();
             dataAdapter.Fill(Usuario);

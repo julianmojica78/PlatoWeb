@@ -1,36 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
+
+
 
 public partial class View_MisReservas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ClientScriptManager cm = this.ClientScript;
-        EReservas datos = new EReservas();
-        DAOUsuario user = new DAOUsuario();
+
+        UuserReservas datos = new UuserReservas();
+        Luser user = new Luser();
         int id_usuario = int.Parse(Session["user_id"].ToString());
 
-        GridView1.DataSource = user.obtenerMisReservas(id_usuario);
-        GridView1.DataBind();
+        // GV_misreservas.DataSource = user.obtenerMisReservas(id_usuario);
+        //GV_misreservas.DataBind();
     }
 
 
 
-    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        ClientScriptManager cm = this.ClientScript;
-        EReservas datos = new EReservas();
-        DAOUsuario user = new DAOUsuario();
-        int id_usuario = int.Parse(Session["user_id"].ToString());
+    //protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    ClientScriptManager cm = this.ClientScript;
+    //    EReservas datos = new EReservas();
+    //    DAOUsuario user = new DAOUsuario();
+    //    int id_usuario = int.Parse(Session["user_id"].ToString());
 
-        GridView1.DataSource = user.obtenerMisReservas(id_usuario);
-        GridView1.DataBind();
-        
-    }
+    //    GV_misreservas.DataSource = user.obtenerMisReservas(id_usuario);
+    //    GV_misreservas.DataBind();
+
+    //}
 
     protected void BT_Regresar_Click(object sender, EventArgs e)
     {
