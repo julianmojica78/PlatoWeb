@@ -20,34 +20,33 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_plato">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Nombre">
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Descripcion">
-                            <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Precio">
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("precio") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Foto">
-                            <ItemTemplate>
-                                <asp:Image ID="Image2" runat="server" Height="50px" ImageUrl='<%# Bind("imagen") %>' Width="50px" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                    <EmptyDataTemplate>
-                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Bind("imagen") %>' />
-                    </EmptyDataTemplate>
-                </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_plato" runat="server" SelectMethod="listarmenu" TypeName="Logica.Luser"></asp:ObjectDataSource>
+                <asp:DataList ID="DataList1" runat="server" DataSourceID="ODS_Plato" RepeatDirection="Horizontal" RepeatColumns="4">
+                    <ItemTemplate>
+                        <table class="auto-style27">
+                            <tr>
+                                <td colspan="3">
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                              <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <td>
+                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Bind("imagen") %>' width="20%" />
+                                    </td>
+                                </div>
+                            </div>
+                                <td>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("precio") %>'></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </ItemTemplate>
+                </asp:DataList>
+                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="obtenerPlato" TypeName="DAOUsuario"></asp:ObjectDataSource>
             </td>
         </tr>
     </table>

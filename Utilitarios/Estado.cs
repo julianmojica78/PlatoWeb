@@ -9,7 +9,9 @@ namespace Utilitarios
     public class Estado
     {
         private Boolean esstado;
+        private Boolean estado1;
 
         public bool Esstado { get => esstado; set => esstado = value; }
+        public bool Estado1 { get => estado1; set => estado1 = value; }
     }
 }

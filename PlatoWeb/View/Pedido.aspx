@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mesero" Language="C#" MasterPageFile="~/View/MasterPageMesero.master" AutoEventWireup="true" CodeFile="~/Controller/Pedido.aspx.cs" Inherits="View_Pedido" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPageMesero.master" AutoEventWireup="true" CodeFile="~/Controller/Pedido.aspx.cs" Inherits="View_Pedido" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     </asp:Content>

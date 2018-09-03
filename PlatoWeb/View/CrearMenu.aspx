@@ -23,7 +23,7 @@
             <asp:Label ID="LB_desc" runat="server" Text="Descripcion: "></asp:Label>
         </td>
         <td>
-            <asp:TextBox ID="TB_desc" runat="server" Height="118px" Width="215px" MaxLength="40" class="form-control" TextMode="MultiLine"></asp:TextBox>
+            <asp:TextBox ID="TB_desc" runat="server" Height="118px" Width="215px" MaxLength="40" class="form-control" TextMode="MultiLine" ></asp:TextBox>
             <asp:RequiredFieldValidator ID="RFV_desc" runat="server" ControlToValidate="TB_desc" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator ID="revTexbox3" runat="server"
                         ErrorMessage="Debe ingresar hasta un maximo de 50 caracteres"

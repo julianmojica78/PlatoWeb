@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Utilitarios
 {
-    public class UuserToken
+    public class UUserToken
     {
         private Int32 id;
         private String nombre;
@@ -23,15 +23,6 @@ namespace Utilitarios
         private String cedula;
         private String session;
         private long fecha;
-        private String mensaje;
-        private String url;
-        private Int32 user_id;
-        private String rclave;
-        private Int32 userId;
-        private String ip;
-        private String mac;
-        
-
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -48,12 +39,5 @@ namespace Utilitarios
         public string Cedula { get => cedula; set => cedula = value; }
         public string Session { get => session; set => session = value; }
         public long Fecha { get => fecha; set => fecha = value; }
-        public string Mensaje { get => mensaje; set => mensaje = value; }
-        public string Url { get => url; set => url = value; }
-        public string Rclave { get => rclave; set => rclave = value; }
-        public int User_id { get => user_id; set => user_id = value; }
-        public int UserId { get => userId; set => userId = value; }
-        public string Ip { get => ip; set => ip = value; }
-        public string Mac { get => mac; set => mac = value; }
     }
 }

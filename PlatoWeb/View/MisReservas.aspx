@@ -33,7 +33,7 @@
                  <tr>
                      <td style="width: 20%">&nbsp;</td>
                      <td>
-                         <asp:GridView ID="GV_misreservas" runat="server" AutoGenerateColumns="False" Width="100%" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                              <Columns>
                                  <asp:BoundField DataField="id_mesa" HeaderText="Mesa" />
                                  <asp:BoundField DataField="puntos" HeaderText="Puntos" Visible="False" />

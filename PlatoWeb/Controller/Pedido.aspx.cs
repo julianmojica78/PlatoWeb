@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Utilitarios;
-using Logica;
-using System.Data;
 
 public partial class View_Pedido : System.Web.UI.Page
 {
@@ -15,12 +15,12 @@ public partial class View_Pedido : System.Web.UI.Page
 
     protected void B_guardar_Click(object sender, EventArgs e)
     {
-        UuserPedido dato = new UuserPedido();
+        EPedido dato = new EPedido();
         ClientScriptManager cm = this.ClientScript;
-        Luser doc = new Luser();
+        DAOUsuario doc = new DAOUsuario();
 
         dato.Id_usuario = int.Parse(Session["user_id"].ToString());
-        DataTable validez1 = doc.obtenerpe(dato.Id_usuario);
+        System.Data.DataTable validez1 = doc.obtenerPedido(dato.Id_usuario);
         dato.Id_pedido = int.Parse(validez1.Rows[0]["id_pedido"].ToString());
         Button btn = (Button)sender;
         DataListItem item = (DataListItem)btn.NamingContainer;
@@ -29,7 +29,7 @@ public partial class View_Pedido : System.Web.UI.Page
         Label lblid = (Label)item.FindControl("Label1");
         dato.Id_plato = int.Parse(lblid.Text);
 
-        doc.guardarPedido(dato);
+        doc.insertarPedido(dato);
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Pedido insertado con exito');</script>");
 
 
@@ -37,11 +37,11 @@ public partial class View_Pedido : System.Web.UI.Page
 
     protected void BT_Mesa_Click(object sender, EventArgs e)
     {
-        UuserPedido dato = new UuserPedido();
+        EPedido dato = new EPedido();
         ClientScriptManager cm = this.ClientScript;
-        Luser doc = new Luser();
+        DAOUsuario doc = new DAOUsuario();
         dato.Id_mesa = int.Parse(DDL_Ubicacion.SelectedValue.ToString());
         dato.Id_mesero = int.Parse(Session["user_id"].ToString());
-        doc.guardarPedido1(dato);
+        doc.InsertPedido(dato);
     }
 }

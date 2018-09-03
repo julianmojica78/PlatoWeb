@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
-using System.Data;
-using Utilitarios;
-using Logica;
+using System.Web.UI.WebControls;
 
 public partial class View_ListadePlatos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        bool x = Session["user_id"] == null;
+        //if (Session["user_id"] == null)
+        //{
+        //    Response.Redirect("Loggin.aspx");
+        //}
 
-        Luser dato = new Luser();
-        Uuser datos = new Uuser();
-        GV_Platos.DataSource = dato.listarmenu();
+        DAOUsuario dato = new DAOUsuario();
+        EUser datos = new EUser();
+        GV_Platos.DataSource = dato.obtenerPlato();
         GV_Platos.DataBind();
     }
 
@@ -37,29 +41,29 @@ public partial class View_ListadePlatos : System.Web.UI.Page
 
     protected void BT_Eliminar_Click(object sender, EventArgs e)
     {
-        UuserCrear datos = new UuserCrear();
-        Luser dato = new Luser();
+        ECrear datos = new ECrear();
+        DAOUsuario dato = new DAOUsuario();
         ClientScriptManager cm = this.ClientScript;
 
         String nombre = Session["nombre"].ToString();
-        DataTable validez1 = dato.obtenerMesa(nombre);
+        System.Data.DataTable validez1 = dato.obtenerIdm(nombre);
         Int32 User_id = int.Parse(validez1.Rows[0]["id_plato"].ToString());
+
         datos.Id_plato= User_id;
-        dato.eliminarPlato(datos);
+
+        dato.EliminarPlato(datos);
         this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Eliminado Correctamente');window.location=\"ListadePlatos.aspx\"</script>");
 
     }
 
     protected void TB_Filtro_TextChanged(object sender, EventArgs e)
     {
-        Luser dato = new Luser();
-        Uuser datos = new Uuser();
+        DAOUsuario dato = new DAOUsuario();
+        EUser datos = new EUser();
         ClientScriptManager cm = this.ClientScript;
         String nombre = TB_Filtro.Text.ToString();
         datos.Nombre = nombre;
-        DataTable validez = dato.validarbuscarM(datos.Nombre);
-
-        //bool x = (int.Parse(validez.Rows[0]["id_plato"].ToString()) > 0);
+        System.Data.DataTable validez = dato.validarBuscarm(datos.Nombre);
         if (int.Parse(validez.Rows[0]["id_plato"].ToString()) > 0)
         {
             GV_Platos.DataSource = dato.buscarPlato(TB_Filtro.Text.ToString());
@@ -74,5 +78,12 @@ public partial class View_ListadePlatos : System.Web.UI.Page
 
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
+        //DAOUsuario dato = new DAOUsuario();
+        //DataTable datos = dato.buscarEmpleados(TB_Filtro.Text.ToString());
+
+
+        //GV_Resultado.DataSource = datos;
+        //GV_Resultado.DataBind();
+
     }
 }
