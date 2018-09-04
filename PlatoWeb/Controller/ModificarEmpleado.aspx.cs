@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_ModificarEmpleado : System.Web.UI.Page
 {
@@ -13,32 +15,41 @@ public partial class View_ModificarEmpleado : System.Web.UI.Page
         Response.Cache.SetAllowResponseInBrowserHistory(false);
         Response.Cache.SetNoStore();
 
-        if (!IsPostBack){
+       if (!IsPostBack){
 
-            EUser datos = new EUser();
-            DAOUsuario user = new DAOUsuario();
+            UUser datos = new UUser();
+            LUser user = new LUser();
             ClientScriptManager cm = this.ClientScript;
-            
+
             TB_Nombre.Text = Session["nombre"].ToString();
             TB_Apellido.Text = Session["apellido"].ToString();
             TB_Email.Text = Session["email"].ToString();
             TB_Celular.Text = Session["telefono"].ToString();
             TB_Cedula.Text = Session["cedula"].ToString();
-            if (Session["rol"].ToString() == "Cocinero")
-            {
-                DDL_Rol.SelectedValue = "2";
-            }
-            else
-            {
-                DDL_Rol.SelectedValue = "3";
-            }
+            string rol = Session["rol"].ToString();
+            datos = user.rol(rol);
+            DDL_Rol.SelectedValue = (datos.Url);
+            //if (Session["rol"].ToString() == "Cocinero")
+            //{
+            //    DDL_Rol.SelectedValue = "2";
+            //}
+            //else
+            //{
+            //    DDL_Rol.SelectedValue = "3";
+            //}
 
             TB_Usuario.Text = Session["usuario"].ToString();
             TB_Contrasena.Text = Session["clave"].ToString();
             TB_CConrasena.Text = Session["clave"].ToString();
-
-
         }
+        //try
+        //{
+
+        //}
+        //catch(PostBackOptions )
+        //{
+
+        //}
     }
 
 
@@ -46,13 +57,12 @@ public partial class View_ModificarEmpleado : System.Web.UI.Page
     protected void B_Crear_Click(object sender, EventArgs e)
     {
 
-        EUser datos = new EUser();
-        DAOUsuario user = new DAOUsuario();
+        UUsuario datos = new UUsuario();
+        LUser user = new LUser();
         ClientScriptManager cm = this.ClientScript;
 
         String nombre = Session["nombre"].ToString();
-        System.Data.DataTable validez1 = user.obtenerId(nombre);
-        Int32 User_id = int.Parse(validez1.Rows[0]["id_usuario"].ToString());
+        datos = user.ObtenerId(nombre);
 
         datos.Nombre = TB_Nombre.Text.ToString();
         datos.Apellido = TB_Apellido.Text.ToString();
@@ -63,10 +73,18 @@ public partial class View_ModificarEmpleado : System.Web.UI.Page
         datos.User_Name1 = TB_Usuario.Text.ToString();
         datos.Clave = TB_Contrasena.Text.ToString();
         datos.Rclave = TB_CConrasena.Text.ToString();
-        datos.User_id = User_id;
+        datos.User_id = (datos.User_id);
         //datos.User_id = int.Parse(Session["codigo"].ToString());
-        user.modificarEmpleado(datos);
-        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Modificado Correctamente');window.location=\"ListaEmpleados.aspx\"</script>");
+
+        datos = user.ModificarEmpleado(datos);
+        this.RegisterStartupScript("mensaje",datos.Mensaje);
+
+    }
+
+
+
+    protected void TB_Email_TextChanged(object sender, EventArgs e)
+    {
 
     }
 }

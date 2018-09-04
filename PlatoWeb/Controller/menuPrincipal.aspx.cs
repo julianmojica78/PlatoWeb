@@ -1,16 +1,20 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
-using Logica;
-using Utilitarios;
-
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 public partial class View_menuPrincipal : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Uuser dato = new Uuser();
-        Luser menu = new Luser();
-    
+        if (!IsPostBack)
+        {
+
+            Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+            Response.Cache.SetAllowResponseInBrowserHistory(false);
+            Response.Cache.SetNoStore();
+        }
     }
 }

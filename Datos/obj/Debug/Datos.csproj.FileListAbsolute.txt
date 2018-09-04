@@ -1,15 +1,13 @@
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Datos.dll
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Datos.pdb
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Utilitarios.dll
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Utilitarios.pdb
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\obj\Debug\Datos.csproj.CopyComplete
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\obj\Debug\Datos.dll
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\obj\Debug\Datos.pdb
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Npgsql.dll
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Npgsql.pdb
-C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Datos\bin\Debug\Npgsql.xml
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Datos.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Datos.pdb
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.dll
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.pdb
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Npgsql.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Npgsql.pdb
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Npgsql.xml
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Utilitarios.dll
+D:\julian\Ing. Sistemas\Datos\bin\Debug\Utilitarios.pdb
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+D:\julian\Ing. Sistemas\Datos\obj\Debug\Datos.csproj.CopyComplete

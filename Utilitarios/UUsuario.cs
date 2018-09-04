@@ -21,6 +21,9 @@ namespace Utilitarios
         private String rclave;
         private String session;
         private String mensaje;
+        private Boolean isPostBack;
+        private String url;
+        private String rol;
 
         public int User_id
         {
@@ -179,5 +182,8 @@ namespace Utilitarios
         }
 
         public string Mensaje { get => mensaje; set => mensaje = value; }
+        public bool IsPostBack { get => isPostBack; set => isPostBack = value; }
+        public string Url { get => url; set => url = value; }
+        public string Rol { get => rol; set => rol = value; }
     }
 }

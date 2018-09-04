@@ -3,19 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="nav-justified">
         <tr>
-            <td class="text-center" style="height: 20px">ELIMINAR PLATO DEL REGISTRO</td>
+            <td class="text-center">ELIMINAR PLATO DEL REGISTRO</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="GV_eliminarPato" runat="server" DataSourceID="ODS_obtenerPlato" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                <asp:GridView ID="GridView1" runat="server" DataSourceID="ODS_obtenerPlato" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                     <Columns>
                         <asp:CommandField ButtonType="Button" HeaderText="Seleccionar" ShowSelectButton="True" />
                     </Columns>
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_obtenerPlato" runat="server" SelectMethod="listarmenu" TypeName="Logica.Luser"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_obtenerPlato" runat="server" SelectMethod="obtenerPlato" TypeName="DAOUsuario"></asp:ObjectDataSource>
             </td>
         </tr>
         <tr>

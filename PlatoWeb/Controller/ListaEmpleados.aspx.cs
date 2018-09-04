@@ -5,23 +5,24 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_ListaEmpleados : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user_id"] == null)
-        {
-            Response.Redirect("Loggin.aspx");
-        }
+        //if (Session["user_id"] == null)
+        //{
+        //    Response.Redirect("Loggin.aspx");
+        //}
 
-        if (!IsPostBack)
-        {
-            DAOUsuario dato = new DAOUsuario();
-            EUser datos = new EUser();
-            GV_Empleados.DataSource = dato.obtenerEmpleado();
+       // if (!IsPostBack)
+       // {
+            LUser dato = new LUser();
+            GV_Empleados.DataSource = dato.ListaEmpleado();
             GV_Empleados.DataBind();
-        }
+        //}
     }
 
      protected void BT_Nuevo_Click(object sender, EventArgs e)
@@ -53,18 +54,16 @@ public partial class View_ListaEmpleados : System.Web.UI.Page
 
     protected void BT_Eliminar_Click1(object sender, EventArgs e)
     {
-        EUser datos = new EUser();
-        DAOUsuario user = new DAOUsuario();
+        UUsuario datos = new UUsuario();
+        LUser user = new LUser();
         ClientScriptManager cm = this.ClientScript;
 
         String nombre = Session["nombre"].ToString();
-        System.Data.DataTable validez1 = user.obtenerId(nombre);
-        Int32 User_id = int.Parse(validez1.Rows[0]["id_usuario"].ToString());
+        datos = user.ObtenerId(nombre);
+        datos.User_id = (datos.User_id);
 
-        datos.User_id = User_id;
-
-        user.eliminarEmpleado(datos);
-        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Eliminado Correctamente');window.location=\"ListaEmpleados.aspx\"</script>");
+        datos = user.EliminarEmpleado(datos);
+        this.RegisterStartupScript("mensaje", datos.Mensaje);
 
 
     }
@@ -82,21 +81,23 @@ public partial class View_ListaEmpleados : System.Web.UI.Page
 
     protected void TB_Filtro_TextChanged(object sender, EventArgs e)
     {
-        DAOUsuario dato = new DAOUsuario();
-        EUser datos = new EUser();
-        ClientScriptManager cm = this.ClientScript;
-        String nombre = TB_Filtro.Text.ToString();
-        datos.Nombre = nombre;
-        System.Data.DataTable validez = dato.validarBusare(datos.Nombre);
-        if (int.Parse(validez.Rows[0]["id_usuario"].ToString()) > 0)
-        {
-            GV_Empleados.DataSource = dato.buscarEmpleados(TB_Filtro.Text.ToString());
+  
+            LUser dato = new LUser();
+            UUsuario datos = new UUsuario();
+            ClientScriptManager cm = this.ClientScript;
+            DataTable usuario;
+
+            datos.Nombre = TB_Filtro.Text.ToString();
+            //datos = dato.BuscarEmpleado(datos);
+            usuario = dato.BuscarComentarios(datos);
+
+            GV_Empleados.DataSource = usuario;
             GV_Empleados.DataBind();
-        }
-        else
-        {
-            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Empleado no Existe');window.location=\"ListaEmpleados.aspx\"</script>");
-        }
+        
+            //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Empleado no Existe');window.location=\"ListaEmpleados.aspx\"</script>");
+
+        
+
 
     }
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_Registro : System.Web.UI.Page
 {
@@ -14,9 +16,10 @@ public partial class View_Registro : System.Web.UI.Page
 
     protected void B_Crear_Click(object sender, EventArgs e)
     {
-        EUser datos = new EUser();
-        DAOUsuario user = new DAOUsuario();
         ClientScriptManager cm = this.ClientScript;
+        UUsuario datos = new UUsuario();
+        LUser user = new LUser();
+        UUser mensaje = new UUser();
 
         datos.Nombre = TB_Nombre.Text.ToString();
         datos.Apellido = TB_Apellido.Text.ToString();
@@ -31,18 +34,13 @@ public partial class View_Registro : System.Web.UI.Page
         datos.Session = "a";
 
 
-        System.Data.DataTable validez = user.validarRegistro(datos.User_Name1,datos.Email);
-        if (int.Parse(validez.Rows[0]["id_usuario"].ToString()) > 0)
-        {
-            user.InsertarUsuario(datos);
-            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Creado Correctamente');</script>");
-            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Usuario Creado Correctamente');window.location=\"Loggin.aspx\"</script>");
+        datos = user.Registro(datos);
+        this.RegisterStartupScript("mensaje",datos.Mensaje);
 
-        }
-        else
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario o Correo ya existente');</script>");
-        }
+        //Response.Redirect(datos.Url);
+
+
+
 
 
     }

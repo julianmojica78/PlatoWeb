@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 public partial class View_ListarMesas : System.Web.UI.Page
 {
@@ -22,7 +27,10 @@ public partial class View_ListarMesas : System.Web.UI.Page
 
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
-
+        //DAOUsuario dato = new DAOUsuario();
+        //DataTable datos = dato.buscarMesas(TB_Filtro.Text.ToString());
+        //GV_Resultado.DataSource = datos;
+        //GV_Resultado.DataBind();
     }
 
     protected void TB_Filtro_TextChanged(object sender, EventArgs e)

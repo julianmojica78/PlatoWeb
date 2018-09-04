@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_ReporteReserva : System.Web.UI.Page
 {
@@ -12,7 +14,7 @@ public partial class View_ReporteReserva : System.Web.UI.Page
     {
         try
         {
-            Reportes reporte = ObtenerInforme();
+            UReportes reporte = ObtenerInforme();
             CRS_Reserva.ReportDocument.SetDataSource(reporte);
             CRV_Reserva.ReportSource = CRS_Reserva;
         }
@@ -23,28 +25,12 @@ public partial class View_ReporteReserva : System.Web.UI.Page
         }
     }
 
-    protected Reportes ObtenerInforme()
+    protected UReportes ObtenerInforme()
     {
-        DataRow fila;  //dr
-        DataTable informacion = new DataTable(); //dt
-        Reportes datos = new Reportes();
+        LUser report = new LUser();
+        UReportes datos = new UReportes();
 
-        informacion = datos.Tables["Reservas"];
-        DAOUsuario usuario = new DAOUsuario();
-
-        DataTable intermedio = usuario.obtenerRes();
-
-        for (int i = 0; i < intermedio.Rows.Count; i++)
-        {
-            fila = informacion.NewRow();
-
-            fila["Reserva"] = int.Parse(intermedio.Rows[i]["id_reserva"].ToString());
-            fila["Usuario"] = intermedio.Rows[i]["user_name"].ToString();
-            fila["Dia"] = intermedio.Rows[i]["dia"].ToString();
-            //fila["Fotos"] = streamFile(intermedio.Rows[i]["foto"].ToString());
-
-            informacion.Rows.Add(fila);
-        }
+       datos = report.obtenerinfomer();
 
         return datos;
     }

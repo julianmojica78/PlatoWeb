@@ -4,11 +4,42 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_MasterPagePrincipal : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+
+        //Estado est = new Estado();
+        //UUser datos = new UUser();
+        //LUser user = new LUser();
+
+
+        ////string usu = Session["nombre"].ToString();
+        ////Session["user_id"].ToString();
+        //try
+        //{
+        //    datos.User_name = Session["nombre"].ToString();
+        //    user.estado(datos);
+
+        //    BT_Cerrar.Visible = (est.Esstado);
+        //    BT_Login.Visible = (est.Esstado);
+        //    L_Comentario.Visible = (est.Esstado);
+        //    TB_Comentario.Visible = (est.Esstado);
+        //    BT_Enviar.Visible = (est.Esstado);
+        //}
+        //catch
+        //{
+        //    user.estado(datos);
+        //    BT_Cerrar.Visible = (est.Esstado);
+        //    L_Comentario.Visible = (est.Esstado);
+        //    TB_Comentario.Visible = (est.Esstado);
+        //    BT_Enviar.Visible = (est.Esstado);
+        //}
+
 
         if (Session["nombre"] == null)
         {
@@ -75,13 +106,14 @@ public partial class View_MasterPagePrincipal : System.Web.UI.MasterPage
 
     protected void BT_Enviar_Click(object sender, EventArgs e)
     {
-        EComentarios datos = new EComentarios();
-        DAOUsuario user = new DAOUsuario();
+
+        UComentarios datos = new UComentarios();
+        LUser user = new LUser();
 
         datos.Descripcion = TB_Comentario.Text.ToString();
         datos.User_id = int.Parse(Session["user_id"].ToString());
+                
 
-        user.insertarComentarios(datos);
-
+        datos = user.InsertarComentario(datos);
     }
 }
