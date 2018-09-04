@@ -5,8 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Utilitarios;
-using Logica;
 
 public partial class View_ReporteEmpleados : System.Web.UI.Page
 {
@@ -14,7 +12,7 @@ public partial class View_ReporteEmpleados : System.Web.UI.Page
     {
         try
         {
-            UReportes reporte = ObtenerInforme();
+            Reportes reporte = ObtenerInforme();
             CRS_Empleados.ReportDocument.SetDataSource(reporte);
             CRV_Empleados.ReportSource = CRS_Empleados;
         }
@@ -25,13 +23,30 @@ public partial class View_ReporteEmpleados : System.Web.UI.Page
         }
     }
 
-    protected UReportes ObtenerInforme()
+    protected Reportes ObtenerInforme()
     {
+        DataRow fila;  //dr
+        DataTable informacion = new DataTable(); //dt
+        Reportes datos = new Reportes();
 
-        LUser report = new LUser();
-        UReportes datos = new UReportes();
+        informacion = datos.Tables["Empleados"];
+        DAOUsuario usuario = new DAOUsuario();
 
-        datos = report.obtenerinformeE();
+        DataTable intermedio = usuario.obtenerEmpleado();
+
+        for (int i = 0; i < intermedio.Rows.Count; i++)
+        {
+            fila = informacion.NewRow();
+            
+            fila["Nombre"] = intermedio.Rows[i]["nombre"].ToString();
+            fila["Apellido"] = intermedio.Rows[i]["apellido"].ToString();
+            fila["Correo"] = intermedio.Rows[i]["correo"].ToString();
+            fila["Cedula"] = intermedio.Rows[i]["cedula"].ToString();
+            fila["Rol"] = intermedio.Rows[i]["rol"].ToString();
+            //fila["Fotos"] = streamFile(intermedio.Rows[i]["foto"].ToString());
+
+            informacion.Rows.Add(fila);
+        }
 
         return datos;
     }

@@ -21,6 +21,7 @@ namespace Utilitarios
         private String e;
         private String f;
 
+
         public string Nomplato { get => nomplato; set => nomplato = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string Precio { get => precio; set => precio = value; }

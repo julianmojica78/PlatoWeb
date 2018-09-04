@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_NuevaMesa : System.Web.UI.Page
 {
@@ -16,15 +15,14 @@ public partial class View_NuevaMesa : System.Web.UI.Page
 
     protected void BT_Nuevo_Click(object sender, EventArgs e)
     {
-        EUser datos = new EUser();
-        DAOUsuario user = new DAOUsuario();
+        Uuser datos = new Uuser();
+        Luser user = new Luser();
         ClientScriptManager cm = this.ClientScript;
 
         datos.Id_Rol = int.Parse(TB_Cantidad.Text.ToString());
         datos.Apellido = TB_Ubicacion.Text.ToString();
 
-            user.insertarMesa(datos);
-        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Creado Correctamente');</script>");
+        user.insertmesa(datos);
         this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Mesa Ingresada');window.location=\"ListarMesas.aspx\"</script>");
 
     }

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Utilitarios;
 using Logica;
-
+using Utilitarios;
+using System.Data;
 public partial class View_ListaComentarios : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -16,35 +11,27 @@ public partial class View_ListaComentarios : System.Web.UI.Page
         Response.Cache.SetAllowResponseInBrowserHistory(false);
         Response.Cache.SetNoStore();
 
-        LUser dato = new LUser();
-        GV_Listar.DataSource = dato.ListaComentarios();
+        Luser dato = new Luser();
+        Uuser datos = new Uuser();
+        GV_Listar.DataSource = dato.listadoComentario();
         GV_Listar.DataBind();
     }
 
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
-        //DAOUsuario dato = new DAOUsuario();
-        //DataTable datos = dato.buscarUsuario(TB_Filtrar.Text.ToString());
-        //GV_Listar.DataSource = datos;
-        //GV_Listar.DataBind();
     }
 
     protected void TB_Filtrar_TextChanged(object sender, EventArgs e)
     {
-                   LUser dato = new LUser();
-            UUsuario datos = new UUsuario();
-            ClientScriptManager cm = this.ClientScript;
-            DataTable usuario;
+        Luser dato = new Luser();
+        Uuser datos = new Uuser();
+        String nombre = TB_Filtrar.Text.ToString();
+        datos.Nombre = nombre;
+        DataTable validez = dato.buscarcomen(datos.Nombre);
 
-            datos.Nombre = TB_Filtrar.Text.ToString();
-            //datos = dato.BuscarEmpleado(datos);
-            usuario = dato.BuscarEmpleado(datos);
-
-            GV_Listar.DataSource = usuario;
+            datos.X = int.Parse(validez.Rows[0]["id_comentarios"].ToString());        
+            GV_Listar.DataSource = dato.buscarUser(TB_Filtrar.Text.ToString());
             GV_Listar.DataBind();
-        
-            //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Empleado no Existe');window.location=\"ListaEmpleados.aspx\"</script>");
-
         
     }
 

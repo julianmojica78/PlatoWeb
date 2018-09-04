@@ -1,17 +1,17 @@
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Logica.dll
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Logica.pdb
-D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.dll
-D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.pdb
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Datos.dll
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Utilitarios.dll
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Npgsql.dll
-D:\julian\Ing. Sistemas\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Datos.pdb
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Utilitarios.pdb
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Npgsql.pdb
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Npgsql.xml
-D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
-D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
-D:\julian\Ing. Sistemas\Logica\obj\Debug\Logica.csproj.CopyComplete
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Newtonsoft.Json.dll
-D:\julian\Ing. Sistemas\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Logica.dll
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Logica.pdb
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Datos.dll
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Utilitarios.dll
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Npgsql.dll
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Datos.pdb
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Utilitarios.pdb
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Npgsql.pdb
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\bin\Debug\Npgsql.xml
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\obj\Debug\Logica.dll
+C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\Logica\obj\Debug\Logica.pdb
