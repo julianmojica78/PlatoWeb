@@ -8,7 +8,7 @@
             <td>
                 <CR:CrystalReportViewer ID="CRV_Reportev" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="50px"  ReportSourceID="CRS_ReporteVentas" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="350px" />
                 <CR:CrystalReportSource ID="CRS_ReporteVentas" runat="server">
-                    <Report FileName="E:\julian\PlatoWeb\Reportes\ReporteVentas.rpt">
+                    <Report FileName="C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\PlatoWeb\Reportes\ReporteVentas.rpt">
                     </Report>
                 </CR:CrystalReportSource>
             </td>

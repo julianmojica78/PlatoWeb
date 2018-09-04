@@ -295,7 +295,18 @@ namespace Logica
         }
         public void ispost(Uuser info)
         {            
-            if (!info.Ispos)
+            if (info.Ispos)
+            {
+                Duser data = new Duser();
+                Uuser datos = new Uuser();
+                info.A = info.B;
+                info.C = info.D;
+                info.E = info.F;
+            }
+        }
+        public void ispost1(UuserCrear info)
+        {
+            if (info.Ispos)
             {
                 Duser data = new Duser();
                 Uuser datos = new Uuser();
@@ -338,6 +349,17 @@ namespace Logica
         {
             Duser dato = new Duser();
             DataTable data = dato.eliminarMesa(datos);
+            return data;
+        }
+        public DataTable modifimenu(UuserCrear datos)
+        {
+            Duser dato = new Duser();
+            DataTable data = new DataTable();
+            if (datos.Imagen != null)
+            {
+                data = dato.modificarMenu(datos);
+            }
+            
             return data;
         }
     }

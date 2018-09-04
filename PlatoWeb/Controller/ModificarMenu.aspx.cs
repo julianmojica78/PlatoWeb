@@ -1,49 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.IO;
+using Utilitarios;
+using Logica;
+using System.Data;
 
 public partial class View_ModificarMenu : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        UuserCrear datos = new UuserCrear();
+        datos.Ispos = IsPostBack;
+        Luser user = new Luser();
+        user.ispost1(datos);
         {
 
-            ECrear datos = new ECrear();
-            DAOUsuario user = new DAOUsuario();
+            
+            
             ClientScriptManager cm = this.ClientScript;
-            TB_nompla.Text = Session["nombre"].ToString();
-            TB_desc.Text = Session["descripcion"].ToString();
-            TB_precio.Text = Session["precio"].ToString();
-         //   TB_imagen.Text = Session["imagen"].ToString();
+
+            datos.A = TB_nompla.Text;
+            datos.B = Session["nombre"].ToString();
+            datos.C = TB_desc.Text;
+            datos.D = Session["descripcion"].ToString();
+            datos.E = TB_precio.Text;
+            datos.F = Session["precio"].ToString();
+
+            //TB_nompla.Text = Session["nombre"].ToString();
+            //TB_desc.Text = Session["descripcion"].ToString();
+            //TB_precio.Text = Session["precio"].ToString();
+
         }
     }
         protected void B_Modificar_Click(object sender, EventArgs e)
         {
-        ECrear datos = new ECrear();
-        DAOUsuario dato = new DAOUsuario();
+        UuserCrear datos = new UuserCrear();
+        Luser dato = new Luser();
         ClientScriptManager cm = this.ClientScript;
         String nombre = Session["nombre"].ToString();
-        System.Data.DataTable validez1 = dato.obtenerIdm(nombre);
+        DataTable validez1 = dato.obtenerMesa(nombre);
         Int32 Id_plato = int.Parse(validez1.Rows[0]["id_plato"].ToString());
-
-
         datos.Id_plato = Id_plato;
         datos.Nomplato = TB_nompla.Text.ToString();
         datos.Descripcion = TB_desc.Text.ToString();
         datos.Precio = TB_precio.Text.ToString();
-        //datos.Imagen = TB_imagen.Text.ToString();
         datos.Imagen = cargarImagen();
-
-        if (datos.Imagen != null)
-        {
-            dato.modificarMenu(datos);
-        }
-    }
+        dato.modifimenu(datos); 
+        }  
 
     protected String cargarImagen()
     {

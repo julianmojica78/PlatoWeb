@@ -707,6 +707,39 @@ namespace Datos
             }
             return Registro;
         }
+        public DataTable modificarMenu(UuserCrear datos)
+        {
+            DataTable platos = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_modificarMenu", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id_plato", NpgsqlDbType.Integer).Value = datos.Id_plato;
+                dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Text).Value = datos.Nomplato;
+                dataAdapter.SelectCommand.Parameters.Add("_descripcion", NpgsqlDbType.Text).Value = datos.Descripcion;
+                dataAdapter.SelectCommand.Parameters.Add("_precio", NpgsqlDbType.Text).Value = datos.Precio;
+                dataAdapter.SelectCommand.Parameters.Add("_imagen", NpgsqlDbType.Text).Value = datos.Imagen;
+
+
+                conection.Open();
+                dataAdapter.Fill(platos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return platos;
+        }
+
     }
 }
 

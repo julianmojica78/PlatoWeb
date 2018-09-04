@@ -12,7 +12,7 @@
         <tr>
             <td>
                 <CR:CrystalReportSource ID="CRS_Reserva" runat="server">
-                    <Report FileName="E:\julian\PlatoWeb\Reportes\ReporteReserva.rpt">
+                    <Report FileName="C:\Users\Duvan\Documents\Migrar2\PlatoWeb-master\PlatoWeb\Reportes\ReporteReserva.rpt">
                     </Report>
                 </CR:CrystalReportSource>
             </td>
