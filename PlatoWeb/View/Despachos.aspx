@@ -68,7 +68,7 @@
                     <SortedDescendingCellStyle BackColor="#E5E5E5" />
                     <SortedDescendingHeaderStyle BackColor="#242121" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_Despachos" runat="server" SelectMethod="obtenerdatos" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Despachos" runat="server" SelectMethod="depacho" TypeName="Logica.LUser"></asp:ObjectDataSource>
             </td>
             <td style="width: 0.1%" class="auto-style1">
                 &nbsp;</td>
@@ -89,14 +89,10 @@
                     <SortedDescendingCellStyle BackColor="#E5E5E5" />
                     <SortedDescendingHeaderStyle BackColor="#242121" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="informacionPlato" TypeName="DAOUsuario" UpdateMethod="despacho">
+                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="infoplato" TypeName="Logica.LUser">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="GV_Pedidos" Name="id_pedido" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="GV_Pedidos" DefaultValue="" Name="id_pedido" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="id_pedido" Type="Int32" />
-                        <asp:Parameter Name="fecha_despacho" Type="DateTime" />
-                    </UpdateParameters>
                 </asp:ObjectDataSource>
             </td>
         </tr>
@@ -138,7 +134,7 @@
                     <SortedDescendingCellStyle BackColor="#E5E5E5" />
                     <SortedDescendingHeaderStyle BackColor="#242121" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_Despacho1" runat="server" SelectMethod="obtenerdatos1" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Despacho1" runat="server" SelectMethod="depacho1" TypeName="Logica.LUser"></asp:ObjectDataSource>
             </td>
             <td style="width: 0.1%" class="auto-style1">
                 &nbsp;</td>
@@ -159,9 +155,9 @@
                     <SortedDescendingCellStyle BackColor="#E5E5E5" />
                     <SortedDescendingHeaderStyle BackColor="#242121" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODS_Plato1" runat="server" SelectMethod="informacionPlato1" TypeName="DAOUsuario">
+                <asp:ObjectDataSource ID="ODS_Plato1" runat="server" SelectMethod="infoplato1" TypeName="Logica.LUser">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="GridView2" Name="id_pedido" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="GridView2" Name="id_pedido" PropertyName="SelectedValue" Type="Int32" DefaultValue="" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
             </td>

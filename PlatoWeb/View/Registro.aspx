@@ -120,7 +120,11 @@
             <td class="auto-style30" rowspan="3">
                 <asp:TextBox ID="TB_Usuario" runat="server" class="form-control" placeholder="Usuario" MaxLength="20"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_Usuario" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
-            </td>
+           <asp:RegularExpressionValidator ID="validator_username" 
+                    runat="server" ControlToValidate="TB_Usuario" 
+                    ErrorMessage="Ingrese solo letras Y Numeros" 
+                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9_-ñÑ]*$"></asp:RegularExpressionValidator>
+                </td>
         </div>
          <div class="row form-group">
             <td class="auto-style35" rowspan="3">Email:</td>

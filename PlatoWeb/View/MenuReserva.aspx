@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPageCocinero.master" AutoEventWireup="true" CodeFile="~/Controller/MenuReserva.aspx.cs" Inherits="View_MenuReserva" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPageMesero.master" AutoEventWireup="true" CodeFile="~/Controller/MenuReserva.aspx.cs" Inherits="View_MenuReserva" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
@@ -64,7 +64,7 @@
                     </ItemTemplate>
                 </asp:DataList>
                 <br />
-                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="obtenerPlato" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="menuReser" TypeName="Logica.LUser"></asp:ObjectDataSource>
             </td>
             <td style="width: 5%">&nbsp;</td>
         </tr>

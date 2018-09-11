@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_Despachos : System.Web.UI.Page
 {
@@ -30,7 +32,8 @@ public partial class View_Despachos : System.Web.UI.Page
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario user = new DAOUsuario();
+        UDespachos datos = new UDespachos();
+        LUser user = new LUser();
 
         Session["pedido"] = GridView1.SelectedRow.Cells[0].Text;
         //Session["reserva"] = GridView1.SelectedRow.Cells[0].Text;
@@ -39,15 +42,16 @@ public partial class View_Despachos : System.Web.UI.Page
         //Int32 id_plato = int.Parse(Session["plato"].ToString());
         DateTime fecha_despacho = DateTime.Now;
 
-        user.despacho(id_pedido,fecha_despacho);
-        Response.Redirect("Despachos.aspx");
+       datos = user.despachos(id_pedido,fecha_despacho);
+        Response.Redirect(datos.Url);
 
 
     }
     protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario user = new DAOUsuario();
+        UDespachos datos = new UDespachos();
+        LUser user = new LUser();
 
         Session["pedido"] = GridView1.SelectedRow.Cells[0].Text;
         //Session["reserva"] = GridView1.SelectedRow.Cells[0].Text;
@@ -56,8 +60,8 @@ public partial class View_Despachos : System.Web.UI.Page
         //Int32 id_plato = int.Parse(Session["plato"].ToString());
         DateTime fecha_despacho = DateTime.Now;
 
-        user.despacho(id_pedido, fecha_despacho);
-        Response.Redirect("Despachos.aspx");
+        datos = user.despachos(id_pedido, fecha_despacho);
+        Response.Redirect(datos.Url);
 
 
     }
@@ -65,7 +69,8 @@ public partial class View_Despachos : System.Web.UI.Page
     protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario user = new DAOUsuario();
+        UDespachos datos = new UDespachos();
+        LUser user = new LUser();
 
         Session["pedido"] = GridView3.SelectedRow.Cells[0].Text;
         //Session["reserva"] = GridView1.SelectedRow.Cells[0].Text;
@@ -74,7 +79,9 @@ public partial class View_Despachos : System.Web.UI.Page
         //Int32 id_plato = int.Parse(Session["plato"].ToString());
         DateTime fecha_despacho = DateTime.Now;
 
-        user.despacho1(id_pedido, fecha_despacho);
-        Response.Redirect("Despachos.aspx");
+        datos = user.despachos1(id_pedido, fecha_despacho);
+        Response.Redirect(datos.Url);
     }
+
+
 }

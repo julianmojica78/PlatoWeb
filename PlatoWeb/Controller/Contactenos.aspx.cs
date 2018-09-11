@@ -12,8 +12,8 @@ public partial class View_Contactenos : System.Web.UI.Page
 
     protected void BT_Enviar_Click1(object sender, EventArgs e)
     {
-        Uuser dato = new Uuser();
-        Luser contacto = new Luser();
+        UUser dato = new UUser();
+        LUser contacto = new LUser();
         ClientScriptManager cm = this.ClientScript;
         dato = contacto.contactenos(TB_Nombre.Text, TB_Telefono.Text, TB_Email.Text, TB_Detalle.Text);
 

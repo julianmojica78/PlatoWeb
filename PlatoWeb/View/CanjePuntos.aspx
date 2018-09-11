@@ -142,6 +142,6 @@
         </tr>
     </table>
     <br />
-                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="obtenerPlato" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="obterplatocaje" TypeName="Logica.LUser"></asp:ObjectDataSource>
             </asp:Content>
 

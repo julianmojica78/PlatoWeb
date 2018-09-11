@@ -3,15 +3,17 @@ using System.Web.UI;
 using System.Data;
 using Utilitarios;
 using Logica;
+using System.Web;
 
 public partial class View_ListadePlatos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        bool x = Session["user_id"] == null;
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
 
-        Luser dato = new Luser();
-        Uuser datos = new Uuser();
+        LUser dato = new LUser();
         GV_Platos.DataSource = dato.listarmenu();
         GV_Platos.DataBind();
     }
@@ -38,7 +40,7 @@ public partial class View_ListadePlatos : System.Web.UI.Page
     protected void BT_Eliminar_Click(object sender, EventArgs e)
     {
         UuserCrear datos = new UuserCrear();
-        Luser dato = new Luser();
+        LUser dato = new LUser();
         ClientScriptManager cm = this.ClientScript;
 
         String nombre = Session["nombre"].ToString();
@@ -52,8 +54,8 @@ public partial class View_ListadePlatos : System.Web.UI.Page
 
     protected void TB_Filtro_TextChanged(object sender, EventArgs e)
     {
-        Luser dato = new Luser();
-        Uuser datos = new Uuser();
+        LUser dato = new LUser();
+        UUser datos = new UUser();
         ClientScriptManager cm = this.ClientScript;
         String nombre = TB_Filtro.Text.ToString();
        // datos.Nombre = nombre;

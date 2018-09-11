@@ -24,6 +24,7 @@ namespace Utilitarios
         private Boolean isPostBack;
         private String url;
         private String rol;
+        private String extension;
 
         public int User_id
         {
@@ -185,5 +186,6 @@ namespace Utilitarios
         public bool IsPostBack { get => isPostBack; set => isPostBack = value; }
         public string Url { get => url; set => url = value; }
         public string Rol { get => rol; set => rol = value; }
+        public string Extension { get => extension; set => extension = value; }
     }
 }

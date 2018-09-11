@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Utilitarios
 {
-    public class UuserToken
+    public class UUserToken
     {
         private Int32 id;
         private String nombre;

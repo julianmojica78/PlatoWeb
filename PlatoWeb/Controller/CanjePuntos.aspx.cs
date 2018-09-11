@@ -3,15 +3,21 @@ using System.Data;
 using System.Web.UI.WebControls;
 using Utilitarios;
 using Logica;
+using System.Web;
 
 public partial class View_CanjePuntos : System.Web.UI.Page
 {
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
+
+
 
         int Id = int.Parse(Session["user_id"].ToString());
-        Luser dao = new Luser();
+        LUser dao = new LUser();
         DataTable tabla = new DataTable();
 
         int id_usuario = int.Parse(Session["user_id"].ToString());
@@ -35,7 +41,7 @@ public partial class View_CanjePuntos : System.Web.UI.Page
 
     protected void BT_Canje_Click(object sender, EventArgs e)
     {
-        Luser datos = new Luser();
+        LUser datos = new LUser();
         int Id = int.Parse(Session["user_id"].ToString());
         DataTable data = datos.redimir(Id);
         Button btn = (Button)sender;

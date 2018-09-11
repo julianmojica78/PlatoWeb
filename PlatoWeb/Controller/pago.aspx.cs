@@ -4,31 +4,46 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_pago : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user_id"]==null)
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
+
+        UUser datos = new UUser();
+        LUser user = new LUser();
+
+
+        try
         {
-            Response.Redirect("Inicio.aspx");
+
+            datos.User_name = Session["nombre"].ToString();
+            user.validarlogin(datos);
+        }
+        catch
+        {
+            datos = user.validarlogin(datos);
+            Response.Redirect(datos.Url);
+
         }
     }
 
     protected void BT_Pagar_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOUsuario user = new DAOUsuario();
-        EReservas datos = new EReservas();
+        LUser user = new LUser();
+        UReserva datos = new UReserva();
 
 
         datos.Id_usuario = int.Parse(Session["user_id"].ToString());
-        System.Data.DataTable validez1 = user.obtenerReserva(datos.Id_usuario);
-        datos.Id_reserva = int.Parse(validez1.Rows[0]["id_reserva"].ToString());
-        datos.Id_usuario = int.Parse(validez1.Rows[0]["id_usuario"].ToString());
-        user.actualizarReserva(datos);
+        datos = user.pago(datos);
 
-        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Pago Realizado con Exito');window.location=\"Inicio.aspx\"</script>");
+        this.RegisterStartupScript("mensaje",datos.Mensaje);
 
         Session["user_id"] = null;
 

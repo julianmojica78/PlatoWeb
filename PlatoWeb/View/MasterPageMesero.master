@@ -37,7 +37,7 @@
 			</div>
 			<div id="menu">
 				<ul>
-                        <li><a href="MenuMesero.aspx">Pedidos</a></li>
+                        <li><a href="Pedido.aspx">Pedidos</a></li>
                         <li><a href="Reservas.aspx">Reservas</a></li>
                         <li><a href="Cerrar.aspx">Cerrar Sesion</a></li>
 

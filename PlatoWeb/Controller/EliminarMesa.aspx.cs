@@ -15,8 +15,8 @@ public partial class View_EliminarMesa : System.Web.UI.Page
         //if (!IsPostBack)
         //{
 
-            Uuser datos = new Uuser();
-            Luser user = new Luser();
+            UUser datos = new UUser();
+            LUser user = new LUser();
             ClientScriptManager cm = this.ClientScript;
 
             TB_id_mesa.Text = Session["id_mesa"].ToString();
@@ -26,8 +26,8 @@ public partial class View_EliminarMesa : System.Web.UI.Page
 
     protected void BT_Modificar_Click(object sender, EventArgs e)
     {
-        Uuser datos = new Uuser();
-        Luser user = new Luser();
+        UUser datos = new UUser();
+        LUser user = new LUser();
 
         ClientScriptManager cm = this.ClientScript;
 

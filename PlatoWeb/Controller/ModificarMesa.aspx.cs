@@ -8,19 +8,20 @@ public partial class View_ModificarMesa : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
-        //Response.Cache.SetAllowResponseInBrowserHistory(false);
-        //Response.Cache.SetNoStore();
-        Uuser datos = new Uuser();
+
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
+
+        UUser datos = new UUser();
         datos.Ispos = IsPostBack;
-        Luser info = new Luser();
+        LUser info = new LUser();
         //TB_id_mesa.Text = Session["id_mesa"].ToString();
         //TB_Cantidad.Text = Session["descripcion"].ToString();
         //TB_Ubicacion.Text = Session["ubicacion"].ToString();
 
         info.ispost(datos);
         { 
-            DAOUsuario user = new DAOUsuario();
             ClientScriptManager cm = this.ClientScript;
             datos.A = TB_id_mesa.Text;
             datos.B = Session["id_mesa"].ToString();
@@ -38,8 +39,8 @@ public partial class View_ModificarMesa : System.Web.UI.Page
 
         protected void BT_Modificar_Click(object sender, EventArgs e)
     {
-        Uuser datos = new Uuser();
-        Luser user = new Luser();
+        UUser datos = new UUser();
+        LUser user = new LUser();
         ClientScriptManager cm = this.ClientScript;
 
 

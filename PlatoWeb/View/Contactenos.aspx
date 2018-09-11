@@ -64,9 +64,9 @@
                     <asp:Label ID="Label1" runat="server" Text="Nombre:"></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="TB_Nombre" runat="server" class="form-control" MaxLength="20" placeholder="Nombre"></asp:TextBox>
+                    <asp:TextBox ID="TB_Nombre" runat="server" class="form-control" MaxLength="30" placeholder="Nombre"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="validator_username" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*Ingrese solo letras" ForeColor="Red" ValidationExpression="^[A-Za-z_-]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="validator_username" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="Ingrese solo letras" ForeColor="Red" ValidationExpression="^[A-Za-z_ ]*$" ValidationGroup="1"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -111,7 +111,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TB_Detalle" ErrorMessage="*" ForeColor="Red" placeholder="Detalle"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="revTexbox3" runat="server"
                         ErrorMessage="Debe ingresar hasta un maximo de 50 caracteres"
-                        ValidationExpression="^([\s\S]{1,50})$"
+                        ValidationExpression="^([A-Za-z0-9_-ñÑ]{1,50})$"
                         ControlToValidate="TB_Detalle"
                         Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
 

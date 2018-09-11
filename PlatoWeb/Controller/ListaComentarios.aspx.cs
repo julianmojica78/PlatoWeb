@@ -11,8 +11,7 @@ public partial class View_ListaComentarios : System.Web.UI.Page
         Response.Cache.SetAllowResponseInBrowserHistory(false);
         Response.Cache.SetNoStore();
 
-        Luser dato = new Luser();
-        Uuser datos = new Uuser();
+        LUser dato = new LUser();
         GV_Listar.DataSource = dato.listadoComentario();
         GV_Listar.DataBind();
     }
@@ -23,8 +22,8 @@ public partial class View_ListaComentarios : System.Web.UI.Page
 
     protected void TB_Filtrar_TextChanged(object sender, EventArgs e)
     {
-        Luser dato = new Luser();
-        Uuser datos = new Uuser();
+        LUser dato = new LUser();
+        UUser datos = new UUser();
         String nombre = TB_Filtrar.Text.ToString();
         datos.Nombre = nombre;
         DataTable validez = dato.buscarcomen(datos.Nombre);

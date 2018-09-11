@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web;
+using Utilitarios;
+using Logica;
 
 public partial class View_ListarMesas : System.Web.UI.Page
 {
@@ -27,12 +29,8 @@ public partial class View_ListarMesas : System.Web.UI.Page
 
     protected void TB_Filtro_TextChanged(object sender, EventArgs e)
     {
-        if (Session["user_id"] == null)
-        {
-            Response.Redirect("Loggin.aspx");
-        }
-        DAOUsuario dato = new DAOUsuario();
-        GV_Resultado.DataSource = dato.buscarMesas(TB_Filtro.Text.ToString());
+        LUser dato = new LUser();
+        GV_Resultado.DataSource = dato.buscarmesa(TB_Filtro.Text.ToString());
         GV_Resultado.DataBind();
     }
 

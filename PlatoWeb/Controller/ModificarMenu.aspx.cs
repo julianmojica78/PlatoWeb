@@ -3,51 +3,40 @@ using System.Web.UI;
 using Utilitarios;
 using Logica;
 using System.Data;
+using System.Web;
 
 public partial class View_ModificarMenu : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
+
         UuserCrear datos = new UuserCrear();
         datos.Ispos = IsPostBack;
-        Luser user = new Luser();
-        Luser ins = new Luser();
-        
-        Uuser info = new Uuser();
+        LUser user = new LUser();
+        LUser ins = new LUser();
+
+        UUser info = new UUser();
         {
-
-            
-            
             ClientScriptManager cm = this.ClientScript;
-
-            //datos.A = TB_nompla.Text;
-            //datos.B = Session["nombre"].ToString();
-            //datos.C = TB_desc.Text;
-            //datos.D = Session["descripcion"].ToString();
-            //datos.E = TB_precio.Text;
-            //datos.F = Session["precio"].ToString();
-
-            //TB_nompla.Text = Session["nombre"].ToString();
-            //TB_desc.Text = Session["descripcion"].ToString();
-            //TB_precio.Text = Session["precio"].ToString();
-            
-
         }
     }
     protected void B_Modificar_Click(object sender, EventArgs e)
     {
         UuserCrear data = new UuserCrear();
         data.Ispos = IsPostBack;
-        Luser user = new Luser();
-        Luser ins = new Luser();
-        user.ispost1(data);
-        Uuser info = new Uuser();
+        LUser user = new LUser();
+        LUser ins = new LUser();
+        //user.ispost1(data);
+        UUser info = new UUser();
 
         info.Ruta = (FU_imagen.PostedFile.FileName);
         data.Imagen = cargarImagen();
-        data.Ispos = prueba(info);
-        
-        user.ispost1(data);
+
+
+        //user.ispost1(data);
         String nombre = Session["nombre"].ToString();
         DataTable validez1 = user.obtenerMesa(nombre);
         Int32 User_id = int.Parse(validez1.Rows[0]["id_plato"].ToString());
@@ -58,44 +47,52 @@ public partial class View_ModificarMenu : System.Web.UI.Page
         data.D = Session["descripcion"].ToString();
         data.E = TB_precio.Text;
         data.F = Session["precio"].ToString();
+        //data.Ispos = prueba(info);
         ins.aux1(data);
     }
     protected String cargarImagen()
     {
-        Luser datos = new Luser();
-        Uuser info = new Uuser();
+        UUser enca = new UUser();
+        LMenu user = new LMenu();
         ClientScriptManager cm = this.ClientScript;
-        info.Nombre = (FU_imagen.PostedFile.FileName);
-        info.Ruta = (FU_imagen.PostedFile.FileName);
-        //String nombreArchivo = System.IO.Path.GetFileName(FU_imagen.PostedFile.FileName);
-        //String extension = System.IO.Path.GetExtension(FU_imagen.PostedFile.FileName);
-        //String saveLocation = "";
-        info.Ubicacion = Server.MapPath("~\\Imagen") + "\\" + info.Nombre;
-        info = datos.cargaImage(info);
-        info.Nombre = (FU_imagen.PostedFile.FileName);
-        //if (!(string.Compare(extension, ".jpg", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".gif", true) == 0 || string.Compare(extension, ".jpe", true) == 0))
-        //{
-        //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
-        //    return null;
-        //}
+        String nombreArchivo = System.IO.Path.GetFileName(FU_imagen.PostedFile.FileName);
+        enca.A = System.IO.Path.GetExtension(FU_imagen.PostedFile.FileName);
 
-        //if (System.IO.File.Exists(saveLocation))
-        //{
-        //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-        //    return null;
-        //}
-        //string  a= FU_imagen.ToString();
-        //string b =FU_imagen.PostedFile.SaveAs(info.Ubicacion).ToString();
-        this.RegisterStartupScript("mensaje", info.Url);
+        UUser mensaje = new UUser();
+        try
+        {
 
-        return "~\\Imagen" + "\\" + info.Nombre;
+
+            enca.Ubicacion = Server.MapPath("~\\Imagen") + "\\" + nombreArchivo;
+            mensaje = user.CargaImagen(enca);
+            //cm.RegisterClientScriptBlock(this.GetType(), "", mensaje.Url);
+
+            enca.Ubicacion = enca.Ubicacion;
+
+            FU_imagen.PostedFile.SaveAs(enca.Ubicacion);
+            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Plato Modificado Correctamente');window.location=\"ListadePlatos.aspx\"</script>");
+
+
+        }
+        catch
+        {
+
+            enca.Ubicacion = Server.MapPath("~\\Imagen") + "\\" + nombreArchivo;
+            //mensaje = user.cargaImage(enca,extension);
+            //enca.Ubicacion = mensaje.B;
+            nombreArchivo = mensaje.Ubicacion;
+            cm.RegisterClientScriptBlock(this.GetType(), "", mensaje.Url);
+
+        }
+
+        return "~\\Imagen" + "\\" + nombreArchivo;
     }
-    public Boolean prueba(Uuser info)
-    {
-        Luser datos = new Luser();
-        info = datos.cargaImage(info);
-        return info.Ispos;
-    }
+    //public Boolean prueba(Uuser info)
+    //{
+    //    Luser datos = new Luser();
+    //    info = datos.cargaImage(info);
+    //    return info.Ispos;
+    //}
 
 
 
@@ -108,6 +105,6 @@ public partial class View_ModificarMenu : System.Web.UI.Page
 
     protected void TB_imagen_TextChanged(object sender, EventArgs e)
     {
-        
+
     }
 }

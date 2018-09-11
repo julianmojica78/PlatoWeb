@@ -69,6 +69,10 @@
                     <div class="auto-style33">
                         <asp:TextBox ID="UserName" runat="server" Font-Size="0.8em" class="form-control" Width="520px" placeholder="Usuario"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RFV_User" runat="server" ControlToValidate="UserName" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True" ValidationGroup="Uno"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="validator_username" 
+                    runat="server" ControlToValidate="UserName" 
+                    ErrorMessage="Ingrese solo letras Y Numeros" 
+                    ForeColor="Red" ValidationExpression="^[A-Za-z0-9_-ñÑ]*$" ValidationGroup="Uno"></asp:RegularExpressionValidator>
                     </div>
                 </div>
             </td>
@@ -103,10 +107,11 @@
             <td>&nbsp;</td>
             <td class="auto-style31" colspan="2">
                  <div class="form-group">
+                <asp:Button ID="B_Login" runat="server" OnClick="Button8_Click" Text="Inicio de Sesión" ValidationGroup="Uno" class="btn btn-primary" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="B_Registrarse" runat="server" OnClick="B_Registrarse_Click" Text="Registrarse" class="btn btn-primary" ValidationGroup="dos" />
                 &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="B_Login" runat="server" OnClick="Button8_Click" Text="Inicio de Sesión" ValidationGroup="Uno" class="btn btn-primary" />
-            </div>
+                </div>
                      </td>
             <td>&nbsp;</td>
         </tr>

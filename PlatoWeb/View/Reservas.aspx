@@ -44,7 +44,7 @@
                         <SortedDescendingHeaderStyle BackColor="#242121" />
                     </asp:GridView>
                 </div>
-                <asp:ObjectDataSource ID="ODS_Re" runat="server" SelectMethod="obtenerRe" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Re" runat="server" SelectMethod="ObtenerRe" TypeName="Logica.LUser"></asp:ObjectDataSource>
             </td>
             <td style="width: 5%">&nbsp;</td>
         </tr>

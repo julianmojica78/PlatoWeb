@@ -4,12 +4,15 @@ using System.Web.UI.WebControls;
 using Utilitarios;
 using Logica;
 using System.Data;
+using System.Web;
 
 public partial class View_Pedido : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
     }
 
 
@@ -17,7 +20,7 @@ public partial class View_Pedido : System.Web.UI.Page
     {
         UuserPedido dato = new UuserPedido();
         ClientScriptManager cm = this.ClientScript;
-        Luser doc = new Luser();
+        LUser doc = new LUser();
 
         dato.Id_usuario = int.Parse(Session["user_id"].ToString());
         DataTable validez1 = doc.obtenerpe(dato.Id_usuario);
@@ -39,7 +42,7 @@ public partial class View_Pedido : System.Web.UI.Page
     {
         UuserPedido dato = new UuserPedido();
         ClientScriptManager cm = this.ClientScript;
-        Luser doc = new Luser();
+        LUser doc = new LUser();
         dato.Id_mesa = int.Parse(DDL_Ubicacion.SelectedValue.ToString());
         dato.Id_mesero = int.Parse(Session["user_id"].ToString());
         doc.guardarPedido1(dato);

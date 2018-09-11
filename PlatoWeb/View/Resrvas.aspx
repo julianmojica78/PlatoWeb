@@ -68,16 +68,16 @@
                 <div class="row form-group" style="height: 100%; width: 100%; margin-left: 0px;">
                     <div class="auto-style3" style="height: 100%; width: 100%; margin-left: 0px;">
                         <label class="sr-only" for="fecha">Fecha:</label>
-                        <asp:TextBox ID="TB_Fecha" runat="server" Width="100%" class="form-control" placeholder="DD/MM/AAAA"></asp:TextBox>
+                        <asp:TextBox ID="TB_Fecha" runat="server" Width="100%" class="form-control" placeholder="DD/MM/AAAA" ValidationGroup="uno"></asp:TextBox>
 
                     </div>
                 </div>
             </td>
             <td class="auto-style4">
                 <rjs:PopCalendar ID="PopCalendar1" runat="server" Control="TB_Fecha" From-Date="" From-Today="True" ValidationGroup="uno" IncrementY="5" MessageAlignment="RightCalendarControl" ScriptsValidators="Server Only" StartAt="Sunday" />
-                <asp:RequiredFieldValidator ID="RFV_Dia" runat="server" ControlToValidate="TB_Fecha" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True" ValidationGroup="Uno"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RFV_Dia" runat="server" ControlToValidate="TB_Fecha" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True" ValidationGroup="uno"></asp:RequiredFieldValidator>
 
-                <asp:RegularExpressionValidator ID="REV_Fecha" runat="server" ControlToValidate="TB_Fecha" ErrorMessage="Fecha No Valida" ForeColor="Red" ValidationExpression="^[dd-mm-yyyy]*$"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="REV_Fecha" runat="server" ControlToValidate="TB_Fecha" ErrorMessage="Fecha No Valida" ForeColor="Red" ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ValidationGroup="uno"></asp:RegularExpressionValidator>
 
             </td>
             <td class="auto-style4" style="width: 5%" rowspan="2"></td>
@@ -103,7 +103,7 @@
             </td>
             <td colspan="2">
 
-                        <asp:DropDownList ID="DDL_Hora" runat="server" Width="100%" DataTextField="hora" DataValueField="id_hora" class="form-control">
+                        <asp:DropDownList ID="DDL_Hora" runat="server" Width="100%" DataTextField="hora" DataValueField="id_hora" class="form-control" ValidationGroup="uno">
                             <asp:ListItem Value="0">---Seleccione Opcion---</asp:ListItem>
                             <asp:ListItem Value="1">12</asp:ListItem>
                             <asp:ListItem Value="2">13</asp:ListItem>
@@ -119,7 +119,7 @@
 
             </td>
             <td style="width: 10%">
-                <asp:RangeValidator ID="RV_Hora" runat="server" ControlToValidate="DDL_Hora" ErrorMessage="Seleccione una Opcion" ForeColor="Red" MaximumValue="90" MinimumValue="1" SetFocusOnError="True" ValidationGroup="Uno"></asp:RangeValidator>
+                <asp:RangeValidator ID="RV_Hora" runat="server" ControlToValidate="DDL_Hora" ErrorMessage="Seleccione una Opcion" ForeColor="Red" MaximumValue="90" MinimumValue="1" SetFocusOnError="True"></asp:RangeValidator>
             </td>
             <td style="width: 5%">&nbsp;</td>
         </tr>
@@ -132,15 +132,15 @@
                 <div class="row form-group" style="height: 100%; width: 100%; margin-left: 0px;">
                     <div class="auto-style3" style="height: 100%; width: 100%; margin-left: 0px;">
                         <label class="sr-only" for="fecha">Fecha:</label>
-                        <asp:DropDownList ID="DDL_Cantp" runat="server" Width="300px" DataSourceID="ODS_Mesa" DataTextField="cantidad" DataValueField="id_mesa" OnSelectedIndexChanged="DDL_Cantp_SelectedIndexChanged" class="form-control">
+                        <asp:DropDownList ID="DDL_Cantp" runat="server" Width="300px" DataSourceID="ODS_Cantidad" DataTextField="cantidad" DataValueField="id_mesa" OnSelectedIndexChanged="DDL_Cantp_SelectedIndexChanged" class="form-control" ValidationGroup="uno">
                         </asp:DropDownList>
-                        <asp:ObjectDataSource ID="ODS_Mesa" runat="server" SelectMethod="obtenerMesa" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                        <asp:ObjectDataSource ID="ODS_Cantidad" runat="server" SelectMethod="obtenerubi" TypeName="Logica.LUser"></asp:ObjectDataSource>
                     
                     </div>
                 </div>
             </td>
             <td style="width: 10%" colspan="2">
-                        <asp:RangeValidator ID="RV_Cantidad" runat="server" ControlToValidate="DDL_Cantp" ErrorMessage="Seleccione una Opcion" ForeColor="Red" MaximumValue="5" MinimumValue="1" SetFocusOnError="True" ValidationGroup="Uno"></asp:RangeValidator>
+                        <asp:RangeValidator ID="RV_Cantidad" runat="server" ControlToValidate="DDL_Cantp" ErrorMessage="Seleccione una Opcion" ForeColor="Red" MaximumValue="5" MinimumValue="1" SetFocusOnError="True" ValidationGroup="uno"></asp:RangeValidator>
                     </td>
             <td style="width: 5%">&nbsp;</td>
         </tr>
@@ -154,7 +154,7 @@
         <tr>
             <td style="width: 5%">&nbsp;</td>
             <td colspan="6" class="text-center">
-                <asp:Button ID="B_Reservar" runat="server"  OnClick="Button8_Click" class="btn btn-primary"  Text="Reservar" ValidationGroup="Uno" />
+                <asp:Button ID="B_Reservar" runat="server"  OnClick="Button8_Click" class="btn btn-primary"  Text="Reservar" ValidationGroup="uno" />
                 <asp:Button ID="BT_MReservas" runat="server" OnClick="BT_MReservas_Click" Text="Mis Reservas" class="btn btn-primary" ValidationGroup="dos" />
             </td>
             <td style="width: 5%">&nbsp;</td>

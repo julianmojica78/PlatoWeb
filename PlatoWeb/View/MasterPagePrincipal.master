@@ -94,7 +94,8 @@
                         ControlToValidate="TB_Comentario"
                         Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
-                        <td rowspan="4">&nbsp;</td>
+                        <td rowspan="4" class="text-center">
+                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style1">

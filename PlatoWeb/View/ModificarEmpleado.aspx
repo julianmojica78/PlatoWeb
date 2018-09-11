@@ -83,7 +83,7 @@
             <td class="auto-style41"></td>
             <td class="text-right">Rol:</td>
             <td class="auto-style44">
-                <asp:DropDownList ID="DDL_Rol" runat="server" Height="26px" Width="213px" class="form-control">
+                <asp:DropDownList ID="DDL_Rol" runat="server" Height="34px" Width="221px" class="form-control">
                     <asp:ListItem Value="1">----SELECCIONE OPCION----</asp:ListItem>
                     <asp:ListItem Value="2">Cocinero</asp:ListItem>
                     <asp:ListItem Value="3">Mesero</asp:ListItem>

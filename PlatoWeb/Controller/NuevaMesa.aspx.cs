@@ -15,8 +15,8 @@ public partial class View_NuevaMesa : System.Web.UI.Page
 
     protected void BT_Nuevo_Click(object sender, EventArgs e)
     {
-        Uuser datos = new Uuser();
-        Luser user = new Luser();
+        UUser datos = new UUser();
+        LUser user = new LUser();
         ClientScriptManager cm = this.ClientScript;
 
         datos.Id_Rol = int.Parse(TB_Cantidad.Text.ToString());

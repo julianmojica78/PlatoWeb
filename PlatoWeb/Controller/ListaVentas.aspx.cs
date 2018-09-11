@@ -4,42 +4,49 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
+using System.Data;
 
 public partial class View_ListaVentas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user_id"] == null)
-        {
-            Response.Redirect("Loggin.aspx");
-        }
-        DAOUsuario dato = new DAOUsuario();
-        EUser datos = new EUser();
-        GridView1.DataSource = dato.obtenerplatopedido();
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
+
+
+        LUser dato = new LUser();
+        GridView1.DataSource = dato.ListaVentas();
         GridView1.DataBind();
 
     }
 
     protected void TB_Filtro_TextChanged(object sender, EventArgs e)
     {
-        DAOUsuario dato = new DAOUsuario();
-        EUser datos = new EUser();
+
+        LUser dato = new LUser();
+        UUsuario datos = new UUsuario();
         ClientScriptManager cm = this.ClientScript;
-        String nombre = TB_Filtro.Text.ToString();
-        datos.Nombre = nombre;
-        System.Data.DataTable validez = dato.validarBusarpp(datos.Nombre);
-        if (int.Parse(validez.Rows[0]["id_pedido"].ToString()) > 0)
-        {
-            GridView1.DataSource = dato.buscarPedidoplato(TB_Filtro.Text.ToString());
-            GridView1.DataBind();
-        }
-        else
-        {
-            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Pedido no Existe');window.location=\"ListaVentas.aspx\"</script>");
-        }
+        DataTable usuario;
+
+        datos.Nombre = TB_Filtro.Text.ToString();
+        //datos = dato.BuscarEmpleado(datos);
+        usuario = dato.BuscarVentas(datos);
+
+        GridView1.DataSource = usuario;
+        GridView1.DataBind();
+
+        //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Empleado no Existe');window.location=\"ListaEmpleados.aspx\"</script>");
     }
 
     protected void BT_Buscar_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }

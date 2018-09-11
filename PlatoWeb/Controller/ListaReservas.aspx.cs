@@ -4,38 +4,56 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
+using System.Data;
 
 public partial class View_ListaReservas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user_id"] == null)
+
+        Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+        Response.Cache.SetAllowResponseInBrowserHistory(false);
+        Response.Cache.SetNoStore();
+
+        UUser datos = new UUser();
+        LUser user = new LUser();
+
+
+        try
         {
-            Response.Redirect("Loggin.aspx");
+
+            datos.User_name = Session["nombre"].ToString();
+            user.validarlogin(datos);
         }
-        DAOUsuario dato = new DAOUsuario();
-        EUser datos = new EUser();
-        GridView2.DataSource = dato.obtenerReservaplato();
+        catch
+        {
+            datos = user.validarlogin(datos);
+            Response.Redirect(datos.Url);
+
+        }
+        LUser dato = new LUser(); ;
+        GridView2.DataSource = dato.ListaReservas();
         GridView2.DataBind();
     }
 
     protected void TB_Filtro_TextChanged(object sender, EventArgs e)
     {
-        DAOUsuario dato = new DAOUsuario();
-        EUser datos = new EUser();
+        LUser dato = new LUser();
+        UUsuario datos = new UUsuario();
         ClientScriptManager cm = this.ClientScript;
-        String nombre = TB_Filtro.Text.ToString();
-        datos.Nombre = nombre;
-        System.Data.DataTable validez = dato.validarBusarrp(datos.Nombre);
-        if (int.Parse(validez.Rows[0]["id_reserva"].ToString()) > 0)
-        {
-            GridView2.DataSource = dato.buscarreservapla(TB_Filtro.Text.ToString());
-            GridView2.DataBind();
-        }
-        else
-        {
-            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('reserva no Existe');window.location=\"ListaReservas.aspx\"</script>");
-        }
+        DataTable usuario;
+
+        datos.Nombre = TB_Filtro.Text.ToString();
+        //datos = dato.BuscarEmpleado(datos);
+        usuario = dato.BuscarVentas(datos);
+
+        GridView2.DataSource = usuario;
+        GridView2.DataBind();
+
+        //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Empleado no Existe');window.location=\"ListaEmpleados.aspx\"</script>");
+
     }
 
     protected void BT_Buscar_Click(object sender, EventArgs e)

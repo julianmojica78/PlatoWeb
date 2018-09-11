@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="../Styles/bower_components/Ionicons/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../Styles/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../Styles/dist/css/skins/skin-black.min.css">
+    <%--<link rel="stylesheet" href="../Styles/dist/css/skins/skin-black.min.css" >--%>
+    <link rel="stylesheet" href="../Styles/dist/css/skins/skin-black-light.min.css" >    
     <link rel="stylesheet" href="../Styles/bower_components/morris.js/morris.css">
     <link rel="stylesheet" href="../Styles/bower_components/jvectormap/jquery-jvectormap.css">
     <link rel="stylesheet" href="../Styles/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
@@ -33,7 +34,7 @@
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="MenuAdmin.aspx" class="logo">
+            <a href="ListadePlatos.aspx" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>PW</b></span>
                 <!-- logo for regular state and mobile devices -->

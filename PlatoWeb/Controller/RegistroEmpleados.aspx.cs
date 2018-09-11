@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class View_RegistroEmpleados : System.Web.UI.Page
 {
@@ -16,8 +18,8 @@ public partial class View_RegistroEmpleados : System.Web.UI.Page
 
     protected void B_Crear_Click(object sender, EventArgs e)
     {
-        EUser datos = new EUser();
-        DAOUsuario user = new DAOUsuario();
+        UUsuario datos = new UUsuario();
+        LUser user = new LUser();
         ClientScriptManager cm = this.ClientScript;
 
         datos.Nombre = TB_Nombre.Text.ToString();
@@ -31,19 +33,8 @@ public partial class View_RegistroEmpleados : System.Web.UI.Page
         datos.Rclave = TB_CConrasena.Text.ToString();
         datos.Session = "a";
 
-
-        System.Data.DataTable validez = user.validarRegistro(datos.User_Name1, datos.Email);
-        if (int.Parse(validez.Rows[0]["id_usuario"].ToString()) > 0)
-        {
-            user.insertarEmpleado(datos);
-            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Creado Correctamente');</script>");
-            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Empleado Creado Correctamente');window.location=\"ListaEmpleados.aspx\"</script>");
-
-        }
-        else
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario o Correo ya existente');</script>");
-        }
+        datos = user.RegistrarEmpleado(datos);
+        this.RegisterStartupScript("mensaje",datos.Mensaje);
 
     }
 }

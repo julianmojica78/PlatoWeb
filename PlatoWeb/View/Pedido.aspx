@@ -17,7 +17,7 @@
             <td style="width: 45%">
                 <asp:DropDownList ID="DDL_Ubicacion" runat="server" DataSourceID="ODS_Ubicacion" DataTextField="ubicacion" DataValueField="id_mesa" Height="20px" Width="246px">
                 </asp:DropDownList>
-                <asp:ObjectDataSource ID="ODS_Ubicacion" runat="server" SelectMethod="obtenerUbicacion" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Ubicacion" runat="server" SelectMethod="obtenerubi" TypeName="Logica.LUser"></asp:ObjectDataSource>
             </td>
             <td aria-atomic="False" aria-busy="False" style="width: 5%">&nbsp;</td>
         </tr>
@@ -85,7 +85,7 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="obtenerPlato" TypeName="DAOUsuario"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Plato" runat="server" SelectMethod="platopedi" TypeName="Logica.LUser"></asp:ObjectDataSource>
             </td>
             <td aria-atomic="False" aria-busy="False" style="width: 5%">&nbsp;</td>
         </tr>
